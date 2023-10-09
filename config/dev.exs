@@ -2,8 +2,6 @@ import Config
 
 # Configure your database
 config :car_dealership, CarDealership.Repo,
-  username: "postgres",
-  password: "postgres",
   hostname: "localhost",
   database: "car_dealership_dev",
   stacktrace: true,
