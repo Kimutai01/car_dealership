@@ -12,6 +12,8 @@
     <%= label f, :title %>
     <%= text_input f, :title %>
     <%= error_tag f, :title %>
+
+     <%= hidden_input f, :category_id, value: @category.id %>
   
     <%= label f, :color %>
     <%= text_input f, :color %>

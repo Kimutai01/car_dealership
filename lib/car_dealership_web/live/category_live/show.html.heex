@@ -1,0 +1,57 @@
+<h1>Show Category</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.category_show_path(@socket, :show, @category)}>
+    <.live_component
+      module={CarDealershipWeb.CategoryLive.FormComponent}
+      id={@category.id}
+      title={@page_title}
+      action={@live_action}
+      category={@category}
+      return_to={Routes.category_show_path(@socket, :show, @category)}
+    />
+  </.modal>
+<% end %>
+
+<%= if @live_action in [:add_cars] do %>
+  <.modal return_to={Routes.category_show_path(@socket, :show, @category)}>
+    <.live_component
+      module={CarDealershipWeb.CarLive.FormComponent}
+      id={@car.id || :new}
+      title={@page_title}
+      action={@live_action}
+      car={@car}
+      category={@category}
+      return_to={Routes.category_show_path(@socket, :show, @category)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @category.name %>
+  </li>
+
+  <li>
+    <strong>Logo:</strong>
+    <%= @category.logo %>
+  </li>
+
+</ul>
+
+<div class="p-4 h-[180px] overflow-y-scroll">
+          <ul class="list-disc p-2">
+            <%= for car <- @category.cars do %>
+            <div class="flex">
+              <li><%= car.title %></li>
+              <%!-- <p><%= live_redirect "Edit", to: Routes.category_show_path(@socket, :edit_allergy,@category.id, car), class: "text-blue-500 p-2 font-bold " %></p> --%>
+              
+            </div>
+            <% end %>
+          </ul>
+        </div>
+
+<span><%= live_patch "Edit", to: Routes.category_show_path(@socket, :edit, @category), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.category_index_path(@socket, :index) %></span>

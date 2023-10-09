@@ -18,6 +18,7 @@ defmodule CarDealership.Repo.Migrations.CreateCars do
       add :vin_no, :string, null: false
       add :fuel_type, :string, null: false
       add :is_featured, :boolean, default: false, null: false
+      add :category_id, references(:categories, on_delete: :nothing), null: false
 
       timestamps()
     end

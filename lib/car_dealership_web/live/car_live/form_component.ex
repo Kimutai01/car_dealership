@@ -24,6 +24,7 @@ defmodule CarDealershipWeb.CarLive.FormComponent do
   end
 
   def handle_event("save", %{"car" => car_params}, socket) do
+    IO.inspect car_params
     save_car(socket, socket.assigns.action, car_params)
   end
 
@@ -40,7 +41,7 @@ defmodule CarDealershipWeb.CarLive.FormComponent do
     end
   end
 
-  defp save_car(socket, :new, car_params) do
+  defp save_car(socket, :add_cars, car_params) do
     case Cars.create_car(car_params) do
       {:ok, _car} ->
         {:noreply,
