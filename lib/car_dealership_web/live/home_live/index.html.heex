@@ -6,20 +6,38 @@
     phx-change="validate"
     phx-submit="save">
 
-     <%= label(f, :type) %>
+     <%!-- <%= label(f, :type) %>
       <%= select(
         f,
         :type,
-        @mapped_categories,
+        [1,2,3], prompt: "Select Categories",
+        class:
+          "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
+        required: true
+      ) %> --%>
+      <%= label(f, :type) %>
+      <%= select(
+        f,
+        :type,
+        @categories,
+        class:
+          "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
+        required: true
+      
+      ) %>
+
+      <%= error_tag(f, :type) %>
+
+  
+    <%= label(f, :brand) %>
+      <%= select(
+        f,
+        :brand,
+        @models,
         class:
           "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
         required: true
       ) %>
-
-  
-    <%= label f, :brand%>
-    <%= text_input f, :brand%>
-    <%= error_tag f, :brand%>
      <%= label f, :year%>
     <%= text_input f, :year%>
     <%= error_tag f, :year%>
