@@ -7,8 +7,9 @@ defmodule CarDealershipWeb.CarLive.FormComponent do
 
   @impl true
   def update(%{car: car} = assigns, socket) do
-    IO.inspect socket
     changeset = Cars.change_car(car)
+
+
     # model = Models.get_model!(Cars.get_car!(car.id).model_id)
 
     {:ok,
