@@ -1,7 +1,7 @@
 defmodule CarDealershipWeb.CategoryLive.Show do
   use CarDealershipWeb, :live_view
 
-  alias CarDealership.Cars.Car
+  alias CarDealership.Models.Model
 
   alias CarDealership.Categories
 
@@ -9,7 +9,7 @@ defmodule CarDealershipWeb.CategoryLive.Show do
   def mount(_params, _session, socket) do
     {:ok,
     socket
-    |> assign(:car, %Car{})}
+    |> assign(:model, %Model{})}
   end
 
   @impl true
@@ -24,5 +24,5 @@ defmodule CarDealershipWeb.CategoryLive.Show do
 
   defp page_title(:show), do: "Show Category"
   defp page_title(:edit), do: "Edit Category"
-  defp page_title(:add_cars), do: "Cars"
+  defp page_title(:add_models), do: "Add Models"
 end

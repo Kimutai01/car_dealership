@@ -8,7 +8,6 @@ defmodule CarDealership.Cars.Car do
     field :year, :integer
     field :color, :string
     field :engine, :string
-    field :model, :string
     field :price, :string
     field :car_photo, :string
     field :car_photo1, :string
@@ -19,7 +18,7 @@ defmodule CarDealership.Cars.Car do
     field :fuel_type, :string
     field :is_featured, :boolean, default: false
 
-    belongs_to :category, CarDealership.Categories.Category
+    belongs_to :model, CarDealership.Models.Model
 
     timestamps()
   end
@@ -27,8 +26,9 @@ defmodule CarDealership.Cars.Car do
   @doc false
   def changeset(car, attrs) do
     car
-    |> cast(attrs, [:title, :color, :model, :year, :price, :description, :car_photo, :car_photo1, :car_photo2, :engine, :transmission, :miles, :vin_no, :fuel_type, :is_featured, :category_id])
-    |> validate_required([:title, :color, :model, :year, :price, :description, :car_photo, :car_photo1, :car_photo2, :engine, :transmission, :miles, :vin_no, :fuel_type, :is_featured, :category_id])
+    |> cast(attrs, [:title, :color, :year, :price, :description, :car_photo, :car_photo1, :car_photo2, :engine, :transmission, :miles, :vin_no, :fuel_type, :is_featured, :model_id])
+    |> validate_required([:title, :color, :year, :price, :description, :car_photo, :car_photo1, :car_photo2, :engine, :transmission, :miles, :vin_no, :fuel_type, :is_featured, :model_id])
+
     |> unique_constraint(:vin_no)
   end
 end

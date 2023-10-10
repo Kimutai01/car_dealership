@@ -13,15 +13,12 @@
     <%= text_input f, :title %>
     <%= error_tag f, :title %>
 
-     <%= hidden_input f, :category_id, value: @category.id %>
+     <%= hidden_input f, :model_id, value: @model.id %>
   
     <%= label f, :color %>
     <%= text_input f, :color %>
     <%= error_tag f, :color %>
   
-    <%= label f, :model %>
-    <%= text_input f, :model %>
-    <%= error_tag f, :model %>
   
     <%= label f, :year %>
     <%= number_input f, :year %>

@@ -1,0 +1,12 @@
+<input type="text" name="Model" placeholder="Model" >
+<input type="text" name="Brand" placeholder="Brand" >
+<input type="text" name="year" placeholder="year" >
+<input type="text" name="min price" placeholder="min price" >
+<input type="text" name="max price" placeholder="max price" >
+
+
+
+<%= for car <- @cars do %>
+<p><%= car.title %></p>
+<% end %>
+

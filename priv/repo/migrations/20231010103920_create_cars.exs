@@ -5,7 +5,6 @@ defmodule CarDealership.Repo.Migrations.CreateCars do
     create table(:cars) do
       add :title, :string, null: false
       add :color, :string, null: false
-      add :model, :string, null: false
       add :year, :integer, null: false
       add :price, :string, null: false
       add :description, :string,  null: false
@@ -18,7 +17,9 @@ defmodule CarDealership.Repo.Migrations.CreateCars do
       add :vin_no, :string, null: false
       add :fuel_type, :string, null: false
       add :is_featured, :boolean, default: false, null: false
-      add :category_id, references(:categories, on_delete: :nothing), null: false
+
+      add :model_id, references(:models, on_delete: :nothing), null: false
+
 
       timestamps()
     end

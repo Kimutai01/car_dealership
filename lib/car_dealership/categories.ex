@@ -18,7 +18,7 @@ defmodule CarDealership.Categories do
 
   """
   def list_categories do
-    Repo.all(Category) |> Repo.preload(:cars)
+    Repo.all(Category) |> Repo.preload(:models)
   end
 
   @doc """
@@ -35,7 +35,7 @@ defmodule CarDealership.Categories do
       ** (Ecto.NoResultsError)
 
   """
-  def get_category!(id), do: Repo.get!(Category, id) |> Repo.preload(:cars)
+  def get_category!(id), do: Repo.get!(Category, id) |> Repo.preload(:models)
 
   @doc """
   Creates a category.

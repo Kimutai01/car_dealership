@@ -1,6 +1,7 @@
 defmodule CarDealershipWeb.Router do
   use CarDealershipWeb, :router
 
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -24,15 +25,27 @@ defmodule CarDealershipWeb.Router do
     live "/categories/:id", CategoryLive.Show, :show
     live "/categories/:id/show/edit", CategoryLive.Show, :edit
 
-    live "/categories/:id/cars", CategoryLive.Show, :add_cars
+    live "/categories/:id/models", CategoryLive.Show, :add_models
 
-    # get "/", PageController, :index
-    # live "/cars", CarLive.Index, :index
+    # live "/categories/:id/models/:model_id", ModelLive.Show, :show
+    live "/models/:id/add_cars", ModelLive.Show, :add_cars
+
+    live "/models", ModelLive.Index, :index
+    live "/models/new", ModelLive.Index, :new
+    live "/models/:id/edit", ModelLive.Index, :edit
+
+    live "/models/:id", ModelLive.Show, :show
+    live "/models/:id/show/edit", ModelLive.Show, :edit
+
+    live "/models/:id/models", ModelLive.Show, :add_models
+
+    live "/", HomeLive.Index, :index
+    live "/cars", CarLive.Index, :index
     # live "/cars/new", CarLive.Index, :new
     # live "/cars/:id/edit", CarLive.Index, :edit
 
-    # live "/cars/:id", CarLive.Show, :show
-    # live "/cars/:id/show/edit", CarLive.Show, :edit
+    live "/cars/:id", CarLive.Show, :show
+    live "/cars/:id/show/edit", CarLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

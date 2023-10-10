@@ -2,10 +2,14 @@ defmodule CarDealershipWeb.CarLive.FormComponent do
   use CarDealershipWeb, :live_component
 
   alias CarDealership.Cars
+  alias CarDealership.Models
+  alias CarDealership.Models.Model
 
   @impl true
   def update(%{car: car} = assigns, socket) do
+    IO.inspect socket
     changeset = Cars.change_car(car)
+    # model = Models.get_model!(Cars.get_car!(car.id).model_id)
 
     {:ok,
      socket

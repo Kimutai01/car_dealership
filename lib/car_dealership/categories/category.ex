@@ -6,7 +6,7 @@ defmodule CarDealership.Categories.Category do
     field :name, :string
     field :logo, :string
 
-    has_many :cars, CarDealership.Cars.Car
+    has_many :models, CarDealership.Models.Model
 
     timestamps()
   end

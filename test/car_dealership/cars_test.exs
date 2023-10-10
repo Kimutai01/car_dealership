@@ -29,7 +29,6 @@ defmodule CarDealership.CarsTest do
       assert car.year == 42
       assert car.color == "some color"
       assert car.engine == "some engine"
-      assert car.model == "some model"
       assert car.price == "some price"
       assert car.car_photo == "some car_photo"
       assert car.car_photo1 == "some car_photo1"
@@ -55,7 +54,6 @@ defmodule CarDealership.CarsTest do
       assert car.year == 43
       assert car.color == "some updated color"
       assert car.engine == "some updated engine"
-      assert car.model == "some updated model"
       assert car.price == "some updated price"
       assert car.car_photo == "some updated car_photo"
       assert car.car_photo1 == "some updated car_photo1"

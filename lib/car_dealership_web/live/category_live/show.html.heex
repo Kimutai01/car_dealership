@@ -13,19 +13,20 @@
   </.modal>
 <% end %>
 
-<%= if @live_action in [:add_cars] do %>
+<%= if @live_action in [:add_models] do %>
   <.modal return_to={Routes.category_show_path(@socket, :show, @category)}>
     <.live_component
-      module={CarDealershipWeb.CarLive.FormComponent}
-      id={@car.id || :new}
+      module={CarDealershipWeb.ModelLive.FormComponent}
+      id={@model.id || :new}
       title={@page_title}
       action={@live_action}
-      car={@car}
+      model={@model}
       category={@category}
       return_to={Routes.category_show_path(@socket, :show, @category)}
     />
   </.modal>
 <% end %>
+
 
 <ul>
 
@@ -41,17 +42,13 @@
 
 </ul>
 
-<div class="p-4 h-[180px] overflow-y-scroll">
-          <ul class="list-disc p-2">
-            <%= for car <- @category.cars do %>
-            <div class="flex">
-              <li><%= car.title %></li>
-              <%!-- <p><%= live_redirect "Edit", to: Routes.category_show_path(@socket, :edit_allergy,@category.id, car), class: "text-blue-500 p-2 font-bold " %></p> --%>
-              
-            </div>
-            <% end %>
-          </ul>
-        </div>
+<%= for model <- @category.models do %>
+<p> <%= model.name %> </p>
+<%= live_redirect "Show", to: Routes.model_show_path(@socket, :show, model) %>
+
+<% end %> 
+
+
 
 <span><%= live_patch "Edit", to: Routes.category_show_path(@socket, :edit, @category), class: "button" %></span> |
 <span><%= live_redirect "Back", to: Routes.category_index_path(@socket, :index) %></span>

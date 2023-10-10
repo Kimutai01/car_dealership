@@ -1,6 +1,6 @@
 defmodule CarDealershipWeb.CarLive.Show do
   use CarDealershipWeb, :live_view
-
+  alias CarDealership.Models
   alias CarDealership.Cars
 
   @impl true
@@ -13,7 +13,8 @@ defmodule CarDealershipWeb.CarLive.Show do
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:car, Cars.get_car!(id))}
+     |> assign(:car, Cars.get_car!(id))
+     |> assign(:model, Models.get_model!(Cars.get_car!(id).model_id))}
   end
 
   defp page_title(:show), do: "Show Car"
