@@ -34,7 +34,7 @@ defmodule CarDealershipWeb.HomeLive.Index do
       ""
     end
 
-    maximum_price = if params["car"]["max"] != nil do
+    maximum_price = if params["car"]["maximum_price"] != nil do
       params["car"]["maximum_price"]
     else
       ""

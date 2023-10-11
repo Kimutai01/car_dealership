@@ -101,4 +101,20 @@ defmodule CarDealership.Cars do
   def change_car(%Car{} = car, attrs \\ %{}) do
     Car.changeset(car, attrs)
   end
+
+  def filter_cars_by_type(type_id) do
+    Repo.all(from(c in Car, where: c.type == ^type_id))
+  end
+
+  def filter_cars_by_brand(brand_id) do
+    Repo.all(from(c in Car, where: c.brand == ^brand_id))
+  end
+
+  def filter_cars_by_year_price(year, min_price, max_price) do
+    Repo.all(
+      from(c in Car,
+        where: c.year == ^year and c.price >= ^min_price and c.price <= ^max_price
+      )
+    )
+  end
 end
