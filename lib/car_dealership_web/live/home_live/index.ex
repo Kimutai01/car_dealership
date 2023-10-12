@@ -22,23 +22,23 @@ defmodule CarDealershipWeb.HomeLive.Index do
     # cars = Models.get_model!(String.to_integer(params["car"]["brand"])).cars
     IO.inspect cars
 
-    year = if params["car"]["year"] != nil do
-      params["car"]["year"]
-    else
-      ""
-    end
+    # year = if params["car"]["year"] != nil do
+    #   params["car"]["year"]
+    # else
+    #   ""
+    # end
 
-    minimum_price = if params["car"]["min"] != nil do
-      params["car"]["minimum_price"]
-    else
-      ""
-    end
+    # minimum_price = if params["car"]["min"] != nil do
+    #   params["car"]["minimum_price"]
+    # else
+    #   ""
+    # end
 
-    maximum_price = if params["car"]["maximum_price"] != nil do
-      params["car"]["maximum_price"]
-    else
-      ""
-    end
+    # maximum_price = if params["car"]["maximum_price"] != nil do
+    #   params["car"]["maximum_price"]
+    # else
+    #   ""
+    # end
 
     # Enum.filter(cars, fn x -> x.year == year end)
     # |> Enum.filter(fn x -> x.price >= minimum_price end)
