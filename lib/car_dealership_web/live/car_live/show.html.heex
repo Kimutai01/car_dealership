@@ -15,7 +15,6 @@
 <% end %>
 
 <ul>
-
   <li>
     <strong>Title:</strong>
     <%= @car.title %>
@@ -25,8 +24,6 @@
     <strong>Color:</strong>
     <%= @car.color %>
   </li>
-
-  
 
   <li>
     <strong>Year:</strong>
@@ -92,8 +89,8 @@
     <strong>Is featured:</strong>
     <%= @car.is_featured %>
   </li>
-
 </ul>
 
-<span><%= live_patch "Edit", to: Routes.car_show_path(@socket, :edit, @car), class: "button" %></span> |
-
+<span>
+  <%= live_patch("Edit", to: Routes.car_show_path(@socket, :edit, @car), class: "button") %>
+</span> |

@@ -9,7 +9,6 @@ defmodule CarDealershipWeb.CarLive.FormComponent do
   def update(%{car: car} = assigns, socket) do
     changeset = Cars.change_car(car)
 
-
     # model = Models.get_model!(Cars.get_car!(car.id).model_id)
 
     {:ok,
@@ -29,7 +28,7 @@ defmodule CarDealershipWeb.CarLive.FormComponent do
   end
 
   def handle_event("save", %{"car" => car_params}, socket) do
-    IO.inspect car_params
+    IO.inspect(car_params)
     save_car(socket, socket.assigns.action, car_params)
   end
 

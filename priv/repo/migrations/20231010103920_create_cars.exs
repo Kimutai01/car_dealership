@@ -7,7 +7,7 @@ defmodule CarDealership.Repo.Migrations.CreateCars do
       add :color, :string, null: false
       add :year, :integer, null: false
       add :price, :string, null: false
-      add :description, :string,  null: false
+      add :description, :string, null: false
       add :car_photo, :string
       add :car_photo1, :string
       add :car_photo2, :string
@@ -20,11 +20,9 @@ defmodule CarDealership.Repo.Migrations.CreateCars do
 
       add :model_id, references(:models, on_delete: :nothing), null: false
 
-
       timestamps()
     end
 
     create unique_index(:cars, [:vin_no])
-
   end
 end

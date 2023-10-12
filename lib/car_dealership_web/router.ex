@@ -1,7 +1,6 @@
 defmodule CarDealershipWeb.Router do
   use CarDealershipWeb, :router
 
-
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session

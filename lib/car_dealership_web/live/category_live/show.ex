@@ -8,14 +8,14 @@ defmodule CarDealershipWeb.CategoryLive.Show do
   @impl true
   def mount(_params, _session, socket) do
     {:ok,
-    socket
-    |> assign(:model, %Model{})}
+     socket
+     |> assign(:model, %Model{})}
   end
 
   @impl true
   def handle_params(params, _, socket) do
+    IO.inspect(params)
 
-    IO.inspect params
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))

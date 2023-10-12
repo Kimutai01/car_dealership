@@ -28,25 +28,23 @@
 <% end %>
 
 <ul>
-
   <li>
     <strong>Name:</strong>
     <%= @model.name %>
   </li>
 
   <%= for car <- @model.cars do %>
-  <p>
-    <li>
-      <strong>Car:</strong>
-      <%= car.title %>
-      <%= live_redirect "Show", to: Routes.car_show_path(@socket, :show, car) %>
-    </li>
+    <p>
+      <li>
+        <strong>Car:</strong>
+        <%= car.title %>
+        <%= live_redirect("Show", to: Routes.car_show_path(@socket, :show, car)) %>
+      </li>
     </p>
   <% end %>
-
 </ul>
 
-<%= live_patch "Add Car", to: Routes.model_show_path(@socket, :add_cars, @model), class: "button" %>
+<%= live_patch("Add Car", to: Routes.model_show_path(@socket, :add_cars, @model), class: "button") %>
 
 <%!-- <span><%= live_patch "Edit", to: Routes.model_show_path(@socket, :edit, @model), class: "button" %></span> | --%>
 <%!-- <span><%= live_redirect "Back", to: Routes.model_index_path(@socket, :index) %></span> --%>

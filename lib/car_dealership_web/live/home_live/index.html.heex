@@ -1,12 +1,55 @@
-<.form
-    let={f}
-    for={@changeset}
-    id="search-form"
-    
-    phx-change="validate"
-    phx-submit="save">
+<div class="swiper h-screen w-[100%] " phx-hook="Swiper" id="swiper">
+  <div class="swiper-wrapper h-full w-full py-8 ">
+    <div class=" swiper-slide h-full w-full object-cover">
+      <img
+        src="https://images.pexels.com/photos/17792257/pexels-photo-17792257/free-photo-of-rear-left-side-view-of-a-white-mercedes-benz-eqb-class-on-a-parking-lot.jpeg?auto=compress&cs=tinysrgb&w=800"
+        class="h-full w-full object-cover"
+      />
+     
+    </div>
+    <div class=" swiper-slide h-full w-full object-cover ">
+      <img
+        src="https://images.pexels.com/photos/17792257/pexels-photo-17792257/free-photo-of-rear-left-side-view-of-a-white-mercedes-benz-eqb-class-on-a-parking-lot.jpeg?auto=compress&cs=tinysrgb&w=800"
+        class="h-full w-full object-cover"
+      />
+      <div class="flex flex-col gap-2 items-center justify-center rounded-b-md  bg-white">
+        <p class="text-3xl font-bold"></p>
+        <div class="flex flex-row justify-center gap-2 items-center">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <div class=" swiper-slide h-full w-full object-cover">
+      <img
+        src="https://images.pexels.com/photos/17792257/pexels-photo-17792257/free-photo-of-rear-left-side-view-of-a-white-mercedes-benz-eqb-class-on-a-parking-lot.jpeg?auto=compress&cs=tinysrgb&w=800"
+        class="h-full w-full object-cover"
+      />
+      <div class="flex flex-col gap-2 items-center justify-center rounded-b-md  bg-white">
+        <p class="text-3xl font-bold"></p>
+        <div class="flex flex-row justify-center gap-2 items-center">
+          <p></p>
+        </div>
+      </div>
+    </div>
+    <div class=" swiper-slide h-full w-full object-cover">
+      <img
+        src="https://images.pexels.com/photos/17792257/pexels-photo-17792257/free-photo-of-rear-left-side-view-of-a-white-mercedes-benz-eqb-class-on-a-parking-lot.jpeg?auto=compress&cs=tinysrgb&w=800"
+        class="h-full w-full object-cover"
+      />
+      <div class="flex flex-col gap-2 items-center justify-center rounded-b-md  bg-white">
+        <p class="text-3xl font-bold"></p>
+        <div class="flex flex-row justify-center gap-2 items-center">
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-     <%!-- <%= label(f, :type) %>
+<h1 class="text-7xl">Hello</h1>
+
+<.form let={f} for={@changeset} id="search-form" phx-change="validate" phx-submit="save">
+  <%!-- <%= label(f, :type) %>
       <%= select(
         f,
         :type,
@@ -15,47 +58,42 @@
           "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
         required: true
       ) %> --%>
-      <%= label(f, :type) %>
-      <%= select(
-        f,
-        :type,
-        @categories,
-        class:
-          "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
-        required: true
-      
-      ) %>
+  <%= label(f, :type) %>
+  <%= select(
+    f,
+    :type,
+    @categories,
+    class:
+      "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
+    required: true
+  ) %>
 
-      <%= error_tag(f, :type) %>
+  <%= error_tag(f, :type) %>
 
-  
-    <%= label(f, :brand) %>
-      <%= select(
-        f,
-        :brand,
-        @models,
-        class:
-          "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
-        required: true
-      ) %>
-     <%= label f, :year%>
-    <%= text_input f, :year%>
-    <%= error_tag f, :year%>
-     <%= label f, :min%>
-    <%= text_input f, :min%>
-    <%= error_tag f, :min%>
-     <%= label f, :max%>
-    <%= text_input f, :max%>
-    <%= error_tag f, :max%>
-  
-    <div>
-      <%= submit "Save", phx_disable_with: "Saving..." %>
-    </div>
-  </.form>
+  <%= label(f, :brand) %>
+  <%= select(
+    f,
+    :brand,
+    @models,
+    class:
+      "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
+    required: true
+  ) %>
+  <%= label(f, :year) %>
+  <%= text_input(f, :year) %>
+  <%= error_tag(f, :year) %>
+  <%= label(f, :min) %>
+  <%= text_input(f, :min) %>
+  <%= error_tag(f, :min) %>
+  <%= label(f, :max) %>
+  <%= text_input(f, :max) %>
+  <%= error_tag(f, :max) %>
 
+  <div>
+    <%= submit("Save", phx_disable_with: "Saving...") %>
+  </div>
+</.form>
 
 <%= for car <- @cars do %>
-<p><%= car.title %></p>
+  <p><%= car.title %></p>
 <% end %>
-
-

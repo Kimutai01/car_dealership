@@ -29,20 +29,56 @@ import topbar from "../vendor/topbar";
 let csrfToken = document
   .querySelector("meta[name='csrf-token']")
   .getAttribute("content");
-let liveSocket = new LiveSocket("/live", Socket, {
-  params: { _csrf_token: csrfToken },
-});
 
 // Show progress bar on live navigation and form submits
 topbar.config({ barColors: { 0: "#29d" }, shadowColor: "rgba(0, 0, 0, .3)" });
 window.addEventListener("phx:page-loading-start", (info) => topbar.show());
 window.addEventListener("phx:page-loading-stop", (info) => topbar.hide());
 
-// connect if there are any LiveViews on the page
-liveSocket.connect();
+// connect if there are any LiveViews on the pag
 
 // expose liveSocket on window for web console debug logs and latency simulation:
 // >> liveSocket.enableDebug()
 // >> liveSocket.enableLatencySim(1000)  // enabled for duration of browser session
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket;
+
+// assets/js/app.js
+
+let Hooks = {};
+
+Hooks.Swiper = {
+  mounted() {
+    const swiper = new Swiper(".swiper", {
+      // Optional parameters
+      direction: "horizontal",
+      loop: true,
+      autoplay: {
+        delay: 5000, // Autoplay delay in milliseconds (5 seconds in this example)
+      },
+
+      // If we need pagination
+
+      // Navigation arrows
+
+      // Responsive breakpoints
+      breakpoints: {
+        // when window width is >= 768px (desktop)
+        768: {
+          slidesPerView: 1,
+        },
+        // when window width is < 768px (mobile)
+        0: {
+          slidesPerView: 1,
+        },
+      },
+    });
+  },
+};
+
+let liveSocket = new LiveSocket("/live", Socket, {
+  hooks: Hooks,
+  params: { _csrf_token: csrfToken },
+});
+
+liveSocket.connect();

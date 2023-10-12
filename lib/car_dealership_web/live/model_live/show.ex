@@ -7,8 +7,8 @@ defmodule CarDealershipWeb.ModelLive.Show do
   @impl true
   def mount(_params, _session, socket) do
     {:ok,
-    socket
-    |> assign(:car, %Car{})}
+     socket
+     |> assign(:car, %Car{})}
   end
 
   @impl true

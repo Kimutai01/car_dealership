@@ -56,8 +56,15 @@
 
         <td>
           <%!-- <span><%= live_redirect "Show", to: Routes.car_show_path(@socket, :show, car) %></span> --%>
-          <span><%= live_patch "Edit", to: Routes.car_index_path(@socket, :edit, car) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: car.id, data: [confirm: "Are you sure?"] %></span>
+          <span><%= live_patch("Edit", to: Routes.car_index_path(@socket, :edit, car)) %></span>
+          <span>
+            <%= link("Delete",
+              to: "#",
+              phx_click: "delete",
+              phx_value_id: car.id,
+              data: [confirm: "Are you sure?"]
+            ) %>
+          </span>
         </td>
       </tr>
     <% end %>

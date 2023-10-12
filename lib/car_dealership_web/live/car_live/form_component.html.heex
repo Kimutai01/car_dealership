@@ -7,69 +7,68 @@
     id="car-form"
     phx-target={@myself}
     phx-change="validate"
-    phx-submit="save">
-  
-    <%= label f, :title %>
-    <%= text_input f, :title %>
-    <%= error_tag f, :title %>
+    phx-submit="save"
+  >
+    <%= label(f, :title) %>
+    <%= text_input(f, :title) %>
+    <%= error_tag(f, :title) %>
 
-     <%= hidden_input f, :model_id, value: @model.id %>
-  
-    <%= label f, :color %>
-    <%= text_input f, :color %>
-    <%= error_tag f, :color %>
-  
-  
-    <%= label f, :year %>
-    <%= number_input f, :year %>
-    <%= error_tag f, :year %>
-  
-    <%= label f, :price %>
-    <%= text_input f, :price %>
-    <%= error_tag f, :price %>
-  
-    <%= label f, :description %>
-    <%= text_input f, :description %>
-    <%= error_tag f, :description %>
-  
-    <%= label f, :car_photo %>
-    <%= text_input f, :car_photo %>
-    <%= error_tag f, :car_photo %>
-  
-    <%= label f, :car_photo1 %>
-    <%= text_input f, :car_photo1 %>
-    <%= error_tag f, :car_photo1 %>
-  
-    <%= label f, :car_photo2 %>
-    <%= text_input f, :car_photo2 %>
-    <%= error_tag f, :car_photo2 %>
-  
-    <%= label f, :engine %>
-    <%= text_input f, :engine %>
-    <%= error_tag f, :engine %>
-  
-    <%= label f, :transmission %>
-    <%= text_input f, :transmission %>
-    <%= error_tag f, :transmission %>
-  
-    <%= label f, :miles %>
-    <%= text_input f, :miles %>
-    <%= error_tag f, :miles %>
-  
-    <%= label f, :vin_no %>
-    <%= text_input f, :vin_no %>
-    <%= error_tag f, :vin_no %>
-  
-    <%= label f, :fuel_type %>
-    <%= text_input f, :fuel_type %>
-    <%= error_tag f, :fuel_type %>
-  
-    <%= label f, :is_featured %>
-    <%= checkbox f, :is_featured %>
-    <%= error_tag f, :is_featured %>
-  
+    <%= hidden_input(f, :model_id, value: @model.id) %>
+
+    <%= label(f, :color) %>
+    <%= text_input(f, :color) %>
+    <%= error_tag(f, :color) %>
+
+    <%= label(f, :year) %>
+    <%= number_input(f, :year) %>
+    <%= error_tag(f, :year) %>
+
+    <%= label(f, :price) %>
+    <%= text_input(f, :price) %>
+    <%= error_tag(f, :price) %>
+
+    <%= label(f, :description) %>
+    <%= text_input(f, :description) %>
+    <%= error_tag(f, :description) %>
+
+    <%= label(f, :car_photo) %>
+    <%= text_input(f, :car_photo) %>
+    <%= error_tag(f, :car_photo) %>
+
+    <%= label(f, :car_photo1) %>
+    <%= text_input(f, :car_photo1) %>
+    <%= error_tag(f, :car_photo1) %>
+
+    <%= label(f, :car_photo2) %>
+    <%= text_input(f, :car_photo2) %>
+    <%= error_tag(f, :car_photo2) %>
+
+    <%= label(f, :engine) %>
+    <%= text_input(f, :engine) %>
+    <%= error_tag(f, :engine) %>
+
+    <%= label(f, :transmission) %>
+    <%= text_input(f, :transmission) %>
+    <%= error_tag(f, :transmission) %>
+
+    <%= label(f, :miles) %>
+    <%= text_input(f, :miles) %>
+    <%= error_tag(f, :miles) %>
+
+    <%= label(f, :vin_no) %>
+    <%= text_input(f, :vin_no) %>
+    <%= error_tag(f, :vin_no) %>
+
+    <%= label(f, :fuel_type) %>
+    <%= text_input(f, :fuel_type) %>
+    <%= error_tag(f, :fuel_type) %>
+
+    <%= label(f, :is_featured) %>
+    <%= checkbox(f, :is_featured) %>
+    <%= error_tag(f, :is_featured) %>
+
     <div>
-      <%= submit "Save", phx_disable_with: "Saving..." %>
+      <%= submit("Save", phx_disable_with: "Saving...") %>
     </div>
   </.form>
 </div>

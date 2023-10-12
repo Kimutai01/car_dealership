@@ -8,7 +8,23 @@ defmodule CarDealership.CarsTest do
 
     import CarDealership.CarsFixtures
 
-    @invalid_attrs %{description: nil, title: nil, year: nil, color: nil, engine: nil, model: nil, price: nil, car_photo: nil, car_photo1: nil, car_photo2: nil, transmission: nil, miles: nil, vin_no: nil, fuel_type: nil, is_featured: nil}
+    @invalid_attrs %{
+      description: nil,
+      title: nil,
+      year: nil,
+      color: nil,
+      engine: nil,
+      model: nil,
+      price: nil,
+      car_photo: nil,
+      car_photo1: nil,
+      car_photo2: nil,
+      transmission: nil,
+      miles: nil,
+      vin_no: nil,
+      fuel_type: nil,
+      is_featured: nil
+    }
 
     test "list_cars/0 returns all cars" do
       car = car_fixture()
@@ -21,7 +37,23 @@ defmodule CarDealership.CarsTest do
     end
 
     test "create_car/1 with valid data creates a car" do
-      valid_attrs = %{description: "some description", title: "some title", year: 42, color: "some color", engine: "some engine", model: "some model", price: "some price", car_photo: "some car_photo", car_photo1: "some car_photo1", car_photo2: "some car_photo2", transmission: "some transmission", miles: "some miles", vin_no: "some vin_no", fuel_type: "some fuel_type", is_featured: true}
+      valid_attrs = %{
+        description: "some description",
+        title: "some title",
+        year: 42,
+        color: "some color",
+        engine: "some engine",
+        model: "some model",
+        price: "some price",
+        car_photo: "some car_photo",
+        car_photo1: "some car_photo1",
+        car_photo2: "some car_photo2",
+        transmission: "some transmission",
+        miles: "some miles",
+        vin_no: "some vin_no",
+        fuel_type: "some fuel_type",
+        is_featured: true
+      }
 
       assert {:ok, %Car{} = car} = Cars.create_car(valid_attrs)
       assert car.description == "some description"
@@ -46,7 +78,24 @@ defmodule CarDealership.CarsTest do
 
     test "update_car/2 with valid data updates the car" do
       car = car_fixture()
-      update_attrs = %{description: "some updated description", title: "some updated title", year: 43, color: "some updated color", engine: "some updated engine", model: "some updated model", price: "some updated price", car_photo: "some updated car_photo", car_photo1: "some updated car_photo1", car_photo2: "some updated car_photo2", transmission: "some updated transmission", miles: "some updated miles", vin_no: "some updated vin_no", fuel_type: "some updated fuel_type", is_featured: false}
+
+      update_attrs = %{
+        description: "some updated description",
+        title: "some updated title",
+        year: 43,
+        color: "some updated color",
+        engine: "some updated engine",
+        model: "some updated model",
+        price: "some updated price",
+        car_photo: "some updated car_photo",
+        car_photo1: "some updated car_photo1",
+        car_photo2: "some updated car_photo2",
+        transmission: "some updated transmission",
+        miles: "some updated miles",
+        vin_no: "some updated vin_no",
+        fuel_type: "some updated fuel_type",
+        is_featured: false
+      }
 
       assert {:ok, %Car{} = car} = Cars.update_car(car, update_attrs)
       assert car.description == "some updated description"

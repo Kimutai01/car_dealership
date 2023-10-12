@@ -17,6 +17,15 @@ config :car_dealership, CarDealershipWeb.Endpoint,
   pubsub_server: CarDealership.PubSub,
   live_view: [signing_salt: "Lb0TtZ/N"]
 
+config :tailwind, version: "3.3.3", default: [
+  args: ~w(
+    --config=tailwind.config.js
+    --input=css/app.css
+    --output=../priv/static/assets/app.css
+  ),
+  cd: Path.expand("../assets", __DIR__)
+]
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

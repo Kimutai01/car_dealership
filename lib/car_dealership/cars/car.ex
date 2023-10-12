@@ -26,9 +26,40 @@ defmodule CarDealership.Cars.Car do
   @doc false
   def changeset(car, attrs) do
     car
-    |> cast(attrs, [:title, :color, :year, :price, :description, :car_photo, :car_photo1, :car_photo2, :engine, :transmission, :miles, :vin_no, :fuel_type, :is_featured, :model_id])
-    |> validate_required([:title, :color, :year, :price, :description, :car_photo, :car_photo1, :car_photo2, :engine, :transmission, :miles, :vin_no, :fuel_type, :is_featured, :model_id])
-
+    |> cast(attrs, [
+      :title,
+      :color,
+      :year,
+      :price,
+      :description,
+      :car_photo,
+      :car_photo1,
+      :car_photo2,
+      :engine,
+      :transmission,
+      :miles,
+      :vin_no,
+      :fuel_type,
+      :is_featured,
+      :model_id
+    ])
+    |> validate_required([
+      :title,
+      :color,
+      :year,
+      :price,
+      :description,
+      :car_photo,
+      :car_photo1,
+      :car_photo2,
+      :engine,
+      :transmission,
+      :miles,
+      :vin_no,
+      :fuel_type,
+      :is_featured,
+      :model_id
+    ])
     |> unique_constraint(:vin_no)
   end
 end
