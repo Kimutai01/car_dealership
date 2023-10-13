@@ -14,9 +14,27 @@
     <%= error_tag(f, :name) %>
     <%= hidden_input(f, :category_id, value: @category.id) %>
 
+
+
     <%= label(f, :color) %>
     <%= text_input(f, :color) %>
     <%= error_tag(f, :color) %>
+
+
+      <%= label(f, :body_type) %>
+      <%= select(
+        f,
+        :body_type,
+        ["Select one", "Sedan", "SUV", "Hatchback", "Saloon", "Convertible", "Wagon", "Van", "Jeep", "Pickup", "hybrid","electric", "sports", "crossover"],
+        
+        class:
+          "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
+        required: true
+      
+      ) %>
+
+      <%= error_tag(f, :body_type) %>
+
 
     <%= label(f, :year) %>
     <%= number_input(f, :year) %>

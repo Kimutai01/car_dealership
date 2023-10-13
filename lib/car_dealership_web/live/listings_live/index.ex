@@ -57,6 +57,8 @@ defmodule CarDealershipWeb.ListingLive.Index do
   def handle_event("categories", params, socket) do
     IO.inspect(params)
 
-    {:noreply,socket}
+    models = Models.get_models_by_body_type(params["name"])
+
+    {:noreply,socket |> assign(:models, models)}
   end
 end

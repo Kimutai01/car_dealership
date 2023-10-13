@@ -11,6 +11,7 @@ defmodule CarDealership.Repo.Migrations.CreateModels do
       add :car_photo, :string, null: false
       add :engine, :string, null: false
       add :transmission, :string, null: false
+      add :body_type, :string, null: false
       add :miles, :string, null: false
       add :vin_no, :string, null: false
       add :fuel_type, :string, null: false

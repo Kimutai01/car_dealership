@@ -111,4 +111,13 @@ defmodule CarDealership.Models do
 
     Repo.all(query)
   end
+
+  def get_models_by_body_type(body_type) do
+    query =
+      from m in Model,
+        where: m.body_type == ^body_type,
+        select: m
+
+    Repo.all(query)
+  end
 end

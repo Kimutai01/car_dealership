@@ -11,6 +11,7 @@ defmodule CarDealership.Models.Model do
     field :price, :integer
     field :car_photo, :string
     field :transmission, :string
+    field :body_type, :string
     field :miles, :string
     field :vin_no, :string
     field :fuel_type, :string
@@ -35,6 +36,7 @@ defmodule CarDealership.Models.Model do
       :car_photo,
       :transmission,
       :miles,
+      :body_type,
       :vin_no,
       :fuel_type,
       :is_featured
@@ -52,6 +54,7 @@ defmodule CarDealership.Models.Model do
       :vin_no,
       :fuel_type,
       :is_featured,
+      :body_type,
       :category_id
     ])
     |> unique_constraint(:vin_no)
