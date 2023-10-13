@@ -76,6 +76,55 @@ Hooks.Swiper = {
   },
 };
 
+Hooks.Scroll = {
+  mounted() {
+    const navigation = document.querySelector(".transparent");
+    const windowHeight = window.innerHeight;
+
+    function handleScroll() {
+      const scrollTop = window.scrollY;
+
+      const opacity = Math.min(scrollTop / windowHeight, 1);
+      navigation.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+    }
+
+    // Attach scroll event listener
+    window.addEventListener("scroll", handleScroll);
+  },
+};
+
+Hooks.NavScroll = {
+  mounted() {
+    const navigation = document.querySelector(".navtransparent");
+    const windowHeight = window.innerHeight;
+
+    function handleScroll() {
+      const scrollTop = window.scrollY;
+
+      const opacity = Math.min(scrollTop / windowHeight, 1);
+      navigation.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+    }
+
+    // Attach scroll event listener
+    window.addEventListener("scroll", handleScroll);
+  },
+};
+
+Hooks.Navbar = {
+  mounted() {
+    const toggleButton = document.getElementById("toggleButton");
+    const sidebar = document.getElementById("sidebar");
+
+    toggleButton.addEventListener("click", () => {
+      sidebar.classList.toggle("-translate-x-full");
+    });
+
+    document.getElementById("sidebarContent").addEventListener("click", () => {
+      sidebar.classList.toggle("-translate-x-full");
+    });
+  },
+};
+
 let liveSocket = new LiveSocket("/live", Socket, {
   hooks: Hooks,
   params: { _csrf_token: csrfToken },
