@@ -8,7 +8,7 @@ defmodule CarDealership.Models.Model do
     field :year, :integer
     field :color, :string
     field :engine, :string
-    field :price, :string
+    field :price, :integer
     field :car_photo, :string
     field :transmission, :string
     field :miles, :string
@@ -24,7 +24,21 @@ defmodule CarDealership.Models.Model do
   @doc false
   def changeset(model, attrs) do
     model
-    |> cast(attrs, [:name, :category_id, :year, :color, :engine, :price, :description, :car_photo, :transmission, :miles, :vin_no, :fuel_type, :is_featured])
+    |> cast(attrs, [
+      :name,
+      :category_id,
+      :year,
+      :color,
+      :engine,
+      :price,
+      :description,
+      :car_photo,
+      :transmission,
+      :miles,
+      :vin_no,
+      :fuel_type,
+      :is_featured
+    ])
     |> validate_required([
       :name,
       :color,
@@ -38,7 +52,6 @@ defmodule CarDealership.Models.Model do
       :vin_no,
       :fuel_type,
       :is_featured,
-
       :category_id
     ])
     |> unique_constraint(:vin_no)

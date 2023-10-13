@@ -3,12 +3,9 @@ defmodule CarDealershipWeb.ModelLive.Show do
 
   alias CarDealership.Models
 
-
   @impl true
   def mount(_params, _session, socket) do
-    {:ok,
-     socket
-     }
+    {:ok, socket}
   end
 
   @impl true

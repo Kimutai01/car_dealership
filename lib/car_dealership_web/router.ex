@@ -39,6 +39,8 @@ defmodule CarDealershipWeb.Router do
     live "/models/:id/models", ModelLive.Show, :add_models
 
     live "/", HomeLive.Index, :index
+
+    live "/listings", ListingLive.Index, :index
     # live "/cars", CarLive.Index, :index
     # # live "/cars/new", CarLive.Index, :new
     # # live "/cars/:id/edit", CarLive.Index, :edit

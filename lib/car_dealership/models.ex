@@ -18,7 +18,7 @@ defmodule CarDealership.Models do
 
   """
   def list_models do
-    Repo.all(Model) |> Repo.preload(:cars)
+    Repo.all(Model)
   end
 
   @doc """
@@ -35,7 +35,7 @@ defmodule CarDealership.Models do
       ** (Ecto.NoResultsError)
 
   """
-  def get_model!(id), do: Repo.get!(Model, id) |> Repo.preload(:cars)
+  def get_model!(id), do: Repo.get!(Model, id)
 
   @doc """
   Creates a model.
@@ -100,5 +100,15 @@ defmodule CarDealership.Models do
   """
   def change_model(%Model{} = model, attrs \\ %{}) do
     Model.changeset(model, attrs)
+  end
+
+  def filter_model(minimum_price, maximum_price) do
+    query =
+      from m in Model,
+        where: m.price >= ^minimum_price,
+        where: m.price <= ^maximum_price,
+        select: m
+
+    Repo.all(query)
   end
 end

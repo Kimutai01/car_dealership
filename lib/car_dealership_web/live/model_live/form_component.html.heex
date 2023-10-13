@@ -14,7 +14,7 @@
     <%= error_tag(f, :name) %>
     <%= hidden_input(f, :category_id, value: @category.id) %>
 
-     <%= label(f, :color) %>
+    <%= label(f, :color) %>
     <%= text_input(f, :color) %>
     <%= error_tag(f, :color) %>
 
@@ -23,7 +23,7 @@
     <%= error_tag(f, :year) %>
 
     <%= label(f, :price) %>
-    <%= text_input(f, :price) %>
+    <%= number_input(f, :price) %>
     <%= error_tag(f, :price) %>
 
     <%= label(f, :description) %>
@@ -33,7 +33,6 @@
     <%= label(f, :car_photo) %>
     <%= text_input(f, :car_photo) %>
     <%= error_tag(f, :car_photo) %>
-
 
     <%= label(f, :engine) %>
     <%= text_input(f, :engine) %>
@@ -58,7 +57,6 @@
     <%= label(f, :is_featured) %>
     <%= checkbox(f, :is_featured) %>
     <%= error_tag(f, :is_featured) %>
-
 
     <div>
       <%= submit("Save", phx_disable_with: "Saving...") %>

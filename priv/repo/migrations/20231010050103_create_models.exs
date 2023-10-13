@@ -6,7 +6,7 @@ defmodule CarDealership.Repo.Migrations.CreateModels do
       add :name, :string, null: false
       add :color, :string, null: false
       add :year, :integer, null: false
-      add :price, :string, null: false
+      add :price, :integer, null: false
       add :description, :string, null: false
       add :car_photo, :string, null: false
       add :engine, :string, null: false

@@ -6,9 +6,9 @@ defmodule CarDealershipWeb.HomeLive.Index do
   def handle_event("validate", params, socket) do
     IO.inspect(params)
 
-    models =
-      Categories.get_category!(String.to_integer(params["car"]["type"])).models
-      |> Enum.map(fn x -> {x.name, x.id} end)
+    # models =
+    #   Categories.get_category!(String.to_integer(params["car"]["type"])).models
+    #   |> Enum.map(fn x -> {x.name, x.id} end)
 
     # cars =
     #   if params["car"]["brand"] != nil do
@@ -43,9 +43,11 @@ defmodule CarDealershipWeb.HomeLive.Index do
     # |> Enum.filter(fn x -> x.price <= maximum_price end)
     # |> Enum.map(fn x -> {x.name, x.id} end)
 
-    {:noreply,
-     socket
-     |> assign(:models, models)}
+    {
+      :noreply,
+      socket
+      #  |> assign(:models, models)}
+    }
   end
 
   @impl true
@@ -58,7 +60,7 @@ defmodule CarDealershipWeb.HomeLive.Index do
 
     {:ok,
      socket
-    #  |> assign(:changeset, changeset)
+     #  |> assign(:changeset, changeset)
      |> assign(:categories, categories)
      |> assign(:models, [])}
   end
