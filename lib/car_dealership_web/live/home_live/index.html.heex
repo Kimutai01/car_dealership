@@ -202,7 +202,7 @@
   </div>
 </div>
 
-<div class="swiper  bg-black" phx-hook="BlogSwiper" id="blogswiper">
+<div class="blogswiper  bg-black" phx-hook="BlogSwiper" id="blogswiper">
   <div class="swiper-wrapper py-8  bg-black">
     <div class=" h-[100%] md:px-12 px-6 hover:scale-105 shadow-2xl transition-all ease-in-out duration-500  swiper-slide  cursor-pointer  w-[100%] ">
       <img
@@ -454,8 +454,8 @@
 </div>
 
 <h1 class="text-7xl">Hello</h1>
-<div phx-update="ignore" id="search">
-<.form let={f} for={@changeset} id="search-form" phx-change="validate" phx-submit="save">
+
+<%!-- <.form let={f} for={@changeset} id="search-form" phx-change="validate" phx-submit="save"> --%>
   <%!-- <%= label(f, :type) %>
       <%= select(
         f,
@@ -465,7 +465,7 @@
           "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
         required: true
       ) %> --%>
-  <%= label(f, :type) %>
+  <%!-- <%= label(f, :type) %>
   <%= select(
     f,
     :type,
@@ -499,9 +499,9 @@
   <div>
     <%= submit("Save", phx_disable_with: "Saving...") %>
   </div>
-</.form>
-</div>
+</.form> --%>
 
-<%= for car <- @cars do %>
+
+<%!-- <%= for car <- @cars do %>
   <p><%= car.title %></p>
-<% end %>
+<% end %> --%>

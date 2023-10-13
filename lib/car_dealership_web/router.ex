@@ -39,12 +39,12 @@ defmodule CarDealershipWeb.Router do
     live "/models/:id/models", ModelLive.Show, :add_models
 
     live "/", HomeLive.Index, :index
-    live "/cars", CarLive.Index, :index
-    # live "/cars/new", CarLive.Index, :new
-    # live "/cars/:id/edit", CarLive.Index, :edit
+    # live "/cars", CarLive.Index, :index
+    # # live "/cars/new", CarLive.Index, :new
+    # # live "/cars/:id/edit", CarLive.Index, :edit
 
-    live "/cars/:id", CarLive.Show, :show
-    live "/cars/:id/show/edit", CarLive.Show, :edit
+    # live "/cars/:id", CarLive.Show, :show
+    # live "/cars/:id/show/edit", CarLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

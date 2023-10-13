@@ -2,13 +2,13 @@ defmodule CarDealershipWeb.ModelLive.Show do
   use CarDealershipWeb, :live_view
 
   alias CarDealership.Models
-  alias CarDealership.Cars.Car
+
 
   @impl true
   def mount(_params, _session, socket) do
     {:ok,
      socket
-     |> assign(:car, %Car{})}
+     }
   end
 
   @impl true
