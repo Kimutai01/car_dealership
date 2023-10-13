@@ -56,7 +56,7 @@
       },
       shadowBlur: 10,
       shadowColor: "rgba(0,   0,   0,   .6)",
-      className: null,
+      class: null,
     },
     repaint = function () {
       canvas.width = window.innerWidth;
@@ -86,7 +86,7 @@
       style.top = style.left = style.right = style.margin = style.padding = 0;
       style.zIndex = 100001;
       style.display = "none";
-      if (options.className) canvas.classList.add(options.className);
+      if (options.class) canvas.classList.add(options.class);
       document.body.appendChild(canvas);
       addEvent(window, "resize", repaint);
     },
@@ -154,4 +154,4 @@
   } else {
     this.topbar = topbar;
   }
-}.call(this, window, document));
+}).call(this, window, document);

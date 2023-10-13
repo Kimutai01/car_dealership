@@ -76,6 +76,35 @@ Hooks.Swiper = {
   },
 };
 
+Hooks.BlogSwiper = {
+  mounted() {
+    const swiper = new Swiper(".blogswiper", {
+      // Optional parameters
+      direction: "horizontal",
+      loop: true,
+      autoplay: {
+        delay: 5000, // Autoplay delay in milliseconds (5 seconds in this example)
+      },
+
+      // If we need pagination
+
+      // Navigation arrows
+
+      // Responsive breakpoints
+      breakpoints: {
+        // when window width is >= 768px (desktop)
+        768: {
+          slidesPerView: 3,
+        },
+        // when window width is < 768px (mobile)
+        0: {
+          slidesPerView: 1,
+        },
+      },
+    });
+  },
+};
+
 Hooks.Scroll = {
   mounted() {
     const navigation = document.querySelector(".transparent");
@@ -90,6 +119,44 @@ Hooks.Scroll = {
 
     // Attach scroll event listener
     window.addEventListener("scroll", handleScroll);
+  },
+};
+Hooks.Map = {
+  mounted() {
+    // ADD YOUR ACCESS TOKEN FROM
+    // https://account.mapbox.com
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoiYW5uZXRvdG9oIiwiYSI6ImNsYjB2cDl1dzFrOTQzcHFtOWdxcHBjbGgifQ.LADz9TYffPhRsjZ_O_hUHw";
+    const map = new mapboxgl.Map({
+      container: "map", // container ID
+      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+      style: "mapbox://styles/mapbox/streets-v12", // style URL
+      center: [36.811667, -1.266944], // starting position [lng, lat]
+      zoom: 9, // starting zoom
+    });
+
+    // Add a marker to the map
+    new mapboxgl.Marker()
+      .setLngLat([36.811667, -1.266944]) // marker position [lng, lat]
+      .addTo(map);
+  },
+  updated() {
+    // ADD YOUR ACCESS TOKEN FROM
+    // https://account.mapbox.com
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoiYW5uZXRvdG9oIiwiYSI6ImNsYjB2cDl1dzFrOTQzcHFtOWdxcHBjbGgifQ.LADz9TYffPhRsjZ_O_hUHw";
+    const map = new mapboxgl.Map({
+      container: "map", // container ID
+      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+      style: "mapbox://styles/mapbox/streets-v12", // style URL
+      center: [-74.5, 40], // starting position [lng, lat]
+      zoom: 9, // starting zoom
+    });
+
+    // Add a marker to the map
+    new mapboxgl.Marker()
+      .setLngLat([-74.5, 40]) // marker position [lng, lat]
+      .addTo(map);
   },
 };
 
