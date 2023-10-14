@@ -47,22 +47,6 @@ defmodule CarDealershipWeb.ModelLive.FormComponent do
     save_model(socket, socket.assigns.action, new_model_params)
   end
 
-  # def handle_event("save", %{"model" => model_params}, socket) do
-  #   uploaded_files =
-  #     consume_uploaded_entries(socket, :image, fn %{path: path}, _entry ->
-  #       dest = Path.join([:code.priv_dir(:car_photo), "static", "uploads", Path.basename(path)])
-
-  #       # The `static/uploads` directory must exist for `File.cp!/2`
-  #       # and MyAppWeb.static_paths/0 should contain uploads to work,.
-  #       File.cp!(path, dest)
-  #       {:ok, "/uploads/" <> Path.basename(dest)}
-  #     end)
-  #   {:noreply, update(socket, :uploaded_files, &(&1 ++ uploaded_files))}
-
-  #   new_model_params = Map.put(model_params, "car_photo", List.first(uploaded_files))
-  #   save_model(socket, socket.assigns.action, new_model_params)
-  # end
-
   defp save_model(socket, :edit, model_params) do
     case Models.update_model(socket.assigns.model, model_params) do
       {:ok, _model} ->
