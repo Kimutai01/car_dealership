@@ -23,7 +23,6 @@
   </div>
   <div class="grid grid-cols-4 gap-6">
     <%= for category <- @categories do %>
-
       <div class="flex-shrink-0 relative overflow-hidden bg-[#9a1b3a] rounded-lg max-w-xs shadow-lg">
         <svg
           class="absolute bottom-0 left-0 mb-8"
@@ -67,7 +66,7 @@
                 "bg-white rounded-full text-orange-500 text-xs font-bold px-3 py-2 leading-none flex items-center"
             ) %>
 
-             <span>
+            <span>
               <%= live_redirect("Show",
                 to: Routes.category_show_path(@socket, :show, category),
                 class:

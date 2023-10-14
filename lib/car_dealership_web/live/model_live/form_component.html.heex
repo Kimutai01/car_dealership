@@ -1,102 +1,163 @@
-<div>
-  <h2><%= @title %></h2>
-
-  <.form
-    let={f}
-    for={@changeset}
-    id="model-form"
-    phx-target={@myself}
-    phx-change="validate"
-    phx-submit="save"
-  >
-    <%= label(f, :name) %>
-    <%= text_input(f, :name) %>
-    <%= error_tag(f, :name) %>
-    <%= hidden_input(f, :category_id, value: @category.id) %>
-
-    <%= label(f, :color) %>
-    <%= text_input(f, :color) %>
-    <%= error_tag(f, :color) %>
-
-    <%= label(f, :body_type) %>
-    <%= select(
-      f,
-      :body_type,
-      [
-        "Select one",
-        "Sedan",
-        "SUV",
-        "Hatchback",
-        "Saloon",
-        "Convertible",
-        "Wagon",
-        "Van",
-        "Jeep",
-        "Pickup",
-        "hybrid",
-        "electric",
-        "sports",
-        "crossover"
-      ],
-      class:
-        "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
-      required: true
-    ) %>
-
-    <%= error_tag(f, :body_type) %>
-
-    <%= label(f, :image) %>
-    <%= live_file_input(@uploads.image) %>
-
-    <%= for entry <- @uploads.image.entries do %>
-      <%= live_img_preview(entry, style: "max-width: 200px; max-height: 200px;") %>
-      <button phx-click="cancel-upload" phx-value-ref={entry.ref}>
-        Cancel
-      </button>
-    <% end %>
-
-    <%= label(f, :year) %>
-    <%= number_input(f, :year) %>
-    <%= error_tag(f, :year) %>
-
-    <%= label(f, :price) %>
-    <%= number_input(f, :price) %>
-    <%= error_tag(f, :price) %>
-
-    <%= label(f, :description) %>
-    <%= text_input(f, :description) %>
-    <%= error_tag(f, :description) %>
-
-    <%!-- <%= label(f, :car_photo) %>
-    <%= text_input(f, :car_photo) %>
-    <%= error_tag(f, :car_photo) %> --%>
-
-    <%= label(f, :engine) %>
-    <%= text_input(f, :engine) %>
-    <%= error_tag(f, :engine) %>
-
-    <%= label(f, :transmission) %>
-    <%= text_input(f, :transmission) %>
-    <%= error_tag(f, :transmission) %>
-
-    <%= label(f, :miles) %>
-    <%= text_input(f, :miles) %>
-    <%= error_tag(f, :miles) %>
-
-    <%= label(f, :vin_no) %>
-    <%= text_input(f, :vin_no) %>
-    <%= error_tag(f, :vin_no) %>
-
-    <%= label(f, :fuel_type) %>
-    <%= text_input(f, :fuel_type) %>
-    <%= error_tag(f, :fuel_type) %>
-
-    <%= label(f, :is_featured) %>
-    <%= checkbox(f, :is_featured) %>
-    <%= error_tag(f, :is_featured) %>
-
-    <div>
-      <%= submit("Save", phx_disable_with: "Saving...") %>
+<div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+  <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+    <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
+      <div class="max-w-md mx-auto">
+        <div class="flex items-center space-x-5">
+          <div class="h-14 w-14 bg-yellow-200 rounded-full flex flex-shrink-0 justify-center items-center text-yellow-500 text-2xl font-mono">
+            i
+          </div>
+          <div class="block pl-2 font-semibold text-xl self-start text-gray-700">
+            <h2 class="leading-relaxed">Create a Category</h2>
+            <p class="text-sm text-gray-500 font-normal leading-relaxed">
+              Create the car category
+            </p>
+          </div>
+        </div>
+        <.form
+          let={f}
+          for={@changeset}
+          id="model-form"
+          phx-target={@myself}
+          phx-change="validate"
+          phx-submit="save"
+          class="divide-y divide-gray-200"
+        >
+          <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+            <div class="flex flex-col">
+              <%= label(f, :name) %>
+              <%= text_input(f, :name,
+                class:
+                  "px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+              ) %>
+              <%= error_tag(f, :name) %>
+            </div>
+            <%= hidden_input(f, :category_id, value: @category.id) %>
+            <div class="flex flex-col">
+              <%= label(f, :image, class: "leading-loose") %>
+              <%= live_file_input(@uploads.image) %>
+            </div>
+            <%= for entry <- @uploads.image.entries do %>
+              <%= live_img_preview(entry, style: "max-width: 200px; max-height: 200px;") %>
+              <button phx-click="cancel-upload" phx-value-ref={entry.ref}>
+                Cancel
+              </button>
+            <% end %>
+            <div class="flex flex-col">
+              <%= label(f, :color) %>
+              <%= text_input(f, :color,
+                class:
+                  "px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+              ) %>
+              <%= error_tag(f, :color) %>
+            </div>
+            <div class="flex flex-col">
+              <%= label(f, :body_type) %>
+              <%= select(
+                f,
+                :body_type,
+                [
+                  "Select one",
+                  "Sedan",
+                  "SUV",
+                  "Saloon",
+                  "Convertible",
+                  "Wagon",
+                  "Van",
+                  "Jeep",
+                  "Pickup",
+                  "hybrid",
+                  "electric",
+                  "sports",
+                  "crossover"
+                ],
+                class:
+                  "px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600",
+                required: true
+              ) %>
+              <%= error_tag(f, :body_type) %>
+            </div>
+            <div class="flex flex-col">
+              <%= label(f, :year) %>
+              <%= number_input(f, :year,
+                class:
+                  "px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+              ) %>
+              <%= error_tag(f, :year) %>
+            </div>
+            <div class="flex flex-col">
+              <%= label(f, :price) %>
+              <%= number_input(f, :price,
+                class:
+                  "px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+              ) %>
+              <%= error_tag(f, :price) %>
+            </div>
+            <div class="flex flex-col">
+              <%= label(f, :description) %>
+              <%= text_input(f, :description,
+                class:
+                  "px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+              ) %>
+              <%= error_tag(f, :description) %>
+            </div>
+            <div class="flex flex-col">
+              <%= label(f, :engine) %>
+              <%= text_input(f, :engine,
+                class:
+                  "px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+              ) %>
+              <%= error_tag(f, :engine) %>
+            </div>
+            <div class="flex flex-col">
+              <%= label(f, :transmission) %>
+              <%= text_input(f, :transmission,
+                class:
+                  "px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+              ) %>
+              <%= error_tag(f, :transmission) %>
+            </div>
+            <div class="flex flex-col">
+              <%= label(f, :miles) %>
+              <%= text_input(f, :miles,
+                class:
+                  "px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+              ) %>
+              <%= error_tag(f, :miles) %>
+            </div>
+            <div class="flex flex-col">
+              <%= label(f, :vin_no) %>
+              <%= text_input(f, :vin_no,
+                class:
+                  "px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+              ) %>
+              <%= error_tag(f, :vin_no) %>
+            </div>
+            <div class="flex flex-col">
+              <%= label(f, :fuel_type) %>
+              <%= text_input(f, :fuel_type,
+                class:
+                  "px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+              ) %>
+              <%= error_tag(f, :fuel_type) %>
+            </div>
+            <div class="flex flex-col">
+              <%= label(f, :is_featured) %>
+              <%= checkbox(f, :is_featured,
+                class:
+                  ""
+              ) %>
+              <%= error_tag(f, :is_featured) %>
+            </div>
+          </div>
+          <div class="pt-4 flex items-center space-x-4">
+            <%= submit("Save",
+              phx_disable_with: "Saving...",
+              class:
+                "bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none"
+            ) %>
+          </div>
+        </.form>
+      </div>
     </div>
-  </.form>
+  </div>
 </div>
