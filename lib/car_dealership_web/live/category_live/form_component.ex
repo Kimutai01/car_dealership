@@ -10,7 +10,9 @@ defmodule CarDealershipWeb.CategoryLive.FormComponent do
     {:ok,
      socket
      |> assign(assigns)
-     |> assign(:changeset, changeset)}
+     |> assign(:changeset, changeset)
+     |> assign(:uploaded_files, [])
+     |> allow_upload(:image, accept: ~w(.jpg .png .jpeg), max_entries: 1)}
   end
 
   @impl true
@@ -24,7 +26,20 @@ defmodule CarDealershipWeb.CategoryLive.FormComponent do
   end
 
   def handle_event("save", %{"category" => category_params}, socket) do
-    save_category(socket, socket.assigns.action, category_params)
+    uploaded_files =
+      consume_uploaded_entries(socket, :image, fn %{path: path}, _entry ->
+        dest =
+          Path.join([:code.priv_dir(:car_dealership), "static", "uploads", Path.basename(path)])
+
+        # The `static/uploads` directory must exist for `File.cp!/2`
+        # and MyAppWeb.static_paths/0 should contain uploads to work,.
+        File.cp!(path, dest)
+        {:ok, "/uploads/" <> Path.basename(dest)}
+      end)
+
+    {:noreply, update(socket, :uploaded_files, &(&1 ++ uploaded_files))}
+    new_category_params = Map.put(category_params, "logo", List.first(uploaded_files))
+    save_category(socket, socket.assigns.action, new_category_params)
   end
 
   defp save_category(socket, :edit, category_params) do
