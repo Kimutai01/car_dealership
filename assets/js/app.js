@@ -192,6 +192,37 @@ Hooks.Navbar = {
   },
 };
 
+// Hooks.Editor = {
+//   mounted() {
+//     // Wait for the DOM to be fully loaded
+//     const markdownElement = document.querySelector(".markdown");
+
+//     //   ClassicEditor.create(document.querySelector(".markdown"), {
+//     //     toolbar: [
+//     //       "heading",
+//     //       "|",
+//     //       "bold",
+//     //       "italic",
+//     //       "link",
+//     //       "bulletedList",
+//     //       "numberedList",
+//     //       "blockQuote",
+//     //       "undo",
+//     //       "redo",
+//     //     ],
+//     //   })
+//     //     .then((editor) => {
+//     //       window.editor = editor;
+//     //     })
+//     //     .catch((error) => {
+//     //       console.error("Oops, something went wrong!");
+//     //       console.error("Please, report the following error on");
+//     //       console.error(error);
+//     //     });
+//     // });
+//   },
+// };
+
 let liveSocket = new LiveSocket("/live", Socket, {
   hooks: Hooks,
   params: { _csrf_token: csrfToken },

@@ -38,6 +38,25 @@
     >
       Blog
     </a>
+    <%= if @user_signed_in == true do %>
+      <%= link("Log out",
+        to: Routes.user_session_path(@socket, :delete),
+        method: :delete,
+        class:
+          "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+      ) %>
+    <% else %>
+      <%= live_redirect("Register",
+        to: Routes.user_registration_path(@socket, :new),
+        class:
+          "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+      ) %>
+      <%= live_redirect("Log in",
+        to: Routes.user_session_path(@socket, :new),
+        class:
+          "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+      ) %>
+    <% end %>
   </div>
 </div>
 

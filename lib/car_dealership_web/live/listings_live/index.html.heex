@@ -20,15 +20,6 @@
     <%= error_tag(f, :max) %>
   </.form>
 </div>
-
-<div>
-  <%= for model <- @models do %>
-    <p><%= model.name %></p>
-
-    <img src={model.car_photo} alt="" />
-  <% end %>
-</div>
-
 <div class="flex gap-10">
   <p class="bg-blue-500 text-white p-3" phx-click="categories" phx-value-name="suvs">Suvs</p>
   <p class="bg-blue-500 text-white p-3" phx-click="categories" phx-value-name="Saloon">Saloon</p>
@@ -38,3 +29,37 @@
   <p class="bg-blue-500 text-white p-3" phx-click="categories" phx-value-name="sports">Sports</p>
   <p class="bg-blue-500 text-white p-3" phx-click="categories" phx-value-name="hybrid">Hybrid</p>
 </div>
+
+ <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-10 w-full">
+    <%= for model <- @models do %>
+      <div class="relative mx-auto w-full">
+        <a class="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
+          <div class="shadow p-4 rounded-lg bg-white">
+            <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
+              <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
+                <div class="">
+                  <img
+                    src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+                    alt=""
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+
+              <div class="absolute flex justify-center bottom-0 mb-3"></div>
+
+              <span class="absolute top-0 left-0 inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-[#9a1b3a] text-sm font-medium text-white select-none">
+                Latest
+              </span>
+            </div>
+
+            <div class="mt-4">
+              <h2>Mercedes Benz E250</h2>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+
+

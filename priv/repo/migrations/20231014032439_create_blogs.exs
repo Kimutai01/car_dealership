@@ -3,9 +3,9 @@ defmodule CarDealership.Repo.Migrations.CreateBlogs do
 
   def change do
     create table(:blogs) do
-      add :title, :string
-      add :content, :string
-      add :tag, :string
+      add :title, :string, null: false
+      add :content, :string, null: false
+      add :tag, :string, null: false
 
       timestamps()
     end
