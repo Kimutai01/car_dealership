@@ -44,6 +44,5 @@ defmodule CarDealershipWeb.HomeLive.Index do
      |> assign(:latest_cars, latest_cars)
      |> assign(:user_signed_in, user_signed_in)
      |> assign(:current_user, current_user)}
-
   end
 end

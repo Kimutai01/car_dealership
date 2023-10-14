@@ -5,7 +5,11 @@ defmodule CarDealershipWeb.BlogLiveTest do
   import CarDealership.BlogsFixtures
 
   @create_attrs %{tag: "some tag", title: "some title", content: "some content"}
-  @update_attrs %{tag: "some updated tag", title: "some updated title", content: "some updated content"}
+  @update_attrs %{
+    tag: "some updated tag",
+    title: "some updated title",
+    content: "some updated content"
+  }
   @invalid_attrs %{tag: nil, title: nil, content: nil}
 
   defp create_blog(_) do

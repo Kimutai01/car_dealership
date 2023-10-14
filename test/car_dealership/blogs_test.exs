@@ -35,7 +35,12 @@ defmodule CarDealership.BlogsTest do
 
     test "update_blog/2 with valid data updates the blog" do
       blog = blog_fixture()
-      update_attrs = %{tag: "some updated tag", title: "some updated title", content: "some updated content"}
+
+      update_attrs = %{
+        tag: "some updated tag",
+        title: "some updated title",
+        content: "some updated content"
+      }
 
       assert {:ok, %Blog{} = blog} = Blogs.update_blog(blog, update_attrs)
       assert blog.tag == "some updated tag"

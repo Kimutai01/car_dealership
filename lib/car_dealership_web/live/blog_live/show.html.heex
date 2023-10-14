@@ -14,7 +14,6 @@
 <% end %>
 
 <ul>
-
   <li>
     <strong>Title:</strong>
     <%= @blog.title %>
@@ -29,8 +28,10 @@
     <strong>Tag:</strong>
     <%= @blog.tag %>
   </li>
-
 </ul>
 
-<span><%= live_patch "Edit", to: Routes.blog_show_path(@socket, :edit, @blog), class: "button" %></span> |
-<span><%= live_redirect "Back", to: Routes.blog_index_path(@socket, :index) %></span>
+<span>
+  <%= live_patch("Edit", to: Routes.blog_show_path(@socket, :edit, @blog), class: "button") %>
+</span>
+|
+<span><%= live_redirect("Back", to: Routes.blog_index_path(@socket, :index)) %></span>

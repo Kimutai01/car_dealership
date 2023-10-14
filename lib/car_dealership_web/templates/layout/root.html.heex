@@ -42,7 +42,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/brands.min.css"
     />
 
-    <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/4.11.1/standard/ckeditor.js">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js ">
@@ -68,7 +69,7 @@
     </script>
   </head>
   <body>
-    <%= render "_user_menu.html", assigns %>
+    <%= render("_user_menu.html", assigns) %>
     <%= @inner_content %>
     <div class="relative mt-16 bg-[#000] text-[#fff]">
       <svg
