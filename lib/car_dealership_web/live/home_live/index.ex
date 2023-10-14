@@ -18,6 +18,8 @@ defmodule CarDealershipWeb.HomeLive.Index do
   def mount(_params, _session, socket) do
     models = Models.get_featured_cars()
 
+    latest_cars = Models.get_latest_cars()
+
     categories =
       Categories.list_categories()
       |> Enum.map(fn x -> {x.name, x.id} end)
@@ -25,6 +27,7 @@ defmodule CarDealershipWeb.HomeLive.Index do
     {:ok,
      socket
      |> assign(:categories, categories)
-     |> assign(:models, models)}
+     |> assign(:models, models)
+     |> assign(:latest_cars, latest_cars)}
   end
 end

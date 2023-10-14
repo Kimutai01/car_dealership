@@ -129,4 +129,14 @@ defmodule CarDealership.Models do
 
     Repo.all(query)
   end
+
+  def get_latest_cars() do
+    query =
+      from m in Model,
+        order_by: [desc: m.inserted_at],
+        select: m,
+        limit: 4
+
+    Repo.all(query)
+  end
 end

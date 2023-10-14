@@ -236,8 +236,7 @@
         </div>
       </div>
     <% end %>
-    
-   
+
     <div class="bg-[#ffffff]  swiper-slide rounded-3xl group overflow-hidden">
       <div class="shadow-md">
         <img
@@ -296,114 +295,35 @@
   <p class="uppercase">We recommend</p>
   <h2 class="font-extrabold pt-10 text-5xl">Latest Vehicles</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-10 w-full">
-    <div class="relative mx-auto w-full">
-      <a class="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
-        <div class="shadow p-4 rounded-lg bg-white">
-          <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
-            <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
-              <div class="">
-                <img
-                  src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-                  alt=""
-                  class="w-full h-full object-cover"
-                />
+    <%= for latest <- @latest_cars do %>
+      <div class="relative mx-auto w-full">
+        <a class="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
+          <div class="shadow p-4 rounded-lg bg-white">
+            <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
+              <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
+                <div class="">
+                  <img
+                    src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+                    alt=""
+                    class="w-full h-full object-cover"
+                  />
+                </div>
               </div>
+
+              <div class="absolute flex justify-center bottom-0 mb-3"></div>
+
+              <span class="absolute top-0 left-0 inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-[#9a1b3a] text-sm font-medium text-white select-none">
+                Latest
+              </span>
             </div>
 
-            <div class="absolute flex justify-center bottom-0 mb-3"></div>
-
-            <span class="absolute top-0 left-0 inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-[#9a1b3a] text-sm font-medium text-white select-none">
-              Latest
-            </span>
-          </div>
-
-          <div class="mt-4">
-            <h2>Mercedes Benz E250</h2>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="relative mx-auto w-full">
-      <a class="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
-        <div class="shadow p-4 rounded-lg bg-white">
-          <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
-            <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
-              <div class="">
-                <img
-                  src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-                  alt=""
-                  class="w-full h-full object-cover"
-                />
-              </div>
+            <div class="mt-4">
+              <h2>Mercedes Benz E250</h2>
             </div>
-
-            <div class="absolute flex justify-center bottom-0 mb-3"></div>
-
-            <span class="absolute top-0 left-0 inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-[#9a1b3a] text-sm font-medium text-white select-none">
-              Latest
-            </span>
           </div>
-
-          <div class="mt-4">
-            <h2>Mercedes Benz E250</h2>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="relative mx-auto w-full">
-      <a class="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
-        <div class="shadow p-4 rounded-lg bg-white">
-          <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
-            <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
-              <div class="">
-                <img
-                  src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-                  alt=""
-                  class="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            <div class="absolute flex justify-center bottom-0 mb-3"></div>
-
-            <span class="absolute top-0 left-0 inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-[#9a1b3a] text-sm font-medium text-white select-none">
-              Latest
-            </span>
-          </div>
-
-          <div class="mt-4">
-            <h2>Mercedes Benz E250</h2>
-          </div>
-        </div>
-      </a>
-    </div>
-    <div class="relative mx-auto w-full">
-      <a class="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
-        <div class="shadow p-4 rounded-lg bg-white">
-          <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
-            <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
-              <div class="">
-                <img
-                  src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-                  alt=""
-                  class="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-
-            <div class="absolute flex justify-center bottom-0 mb-3"></div>
-
-            <span class="absolute top-0 left-0 inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-[#9a1b3a] text-sm font-medium text-white select-none">
-              Latest
-            </span>
-          </div>
-
-          <div class="mt-4">
-            <h2>Mercedes Benz E250</h2>
-          </div>
-        </div>
-      </a>
-    </div>
+        </a>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -426,6 +346,108 @@
 </div>
 
 <%!-- blogs --%>
+<div class="pt-20">
+  <h2 class="text-center">Latest blog posts</h2>
+
+  <h1 class="text-5xl font-bold text-center mt-5">Our blog world</h1>
+
+  <div class="blogswiper  px-5 mt-20 pb-20" phx-hook="BlogSwiper" id="blogswiper">
+    <div class="swiper-wrapper py-8 gap-10">
+      <div class="bg-[#ffffff]  swiper-slide rounded-3xl group overflow-hidden">
+        <div class="shadow-md">
+          <img
+            src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+            alt="doctor"
+            class="rounded-t-3xl w-[100%] transform-gpu transition-transform scale-100 group-hover:scale-110"
+          />
+          <div class="p-8 border-t-2 border-[#f3f8ff]">
+            <h1 class="text-[#13182f] font-bold text-2xl group-hover:text-[#9a1b3a]">
+              Mercedes benz E250
+            </h1>
+            <p class="text-[#666e82] font-medium text-lg mt-5">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Quisquam voluptatum, quibusdam, quia, quod voluptates
+              voluptate voluptatibus quos doloribus quas voluptatem quidem.
+            </p>
+            <div class="flex items-center justify-between mt-5">
+              <p class="bg-[#f3f8ff] font-medium text-[#9a1b3a] py-4 px-6 rounded-full">
+                News
+              </p>
+              <p className="text-lg font-medium">July 20, 2023</p>
+
+              <div class="flex items-center font-medium">
+                <p class="group-hover:text-[#9a1b3a]">Explore</p>
+                <i class="fa-solid fa-arrow-right transform translate-x-0 group-hover:translate-x-2 group-hover:text-[#9a1b3a] transition-transform text-3xl">
+                </i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-[#ffffff]  swiper-slide rounded-3xl group overflow-hidden">
+        <div class="shadow-md">
+          <img
+            src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+            alt="doctor"
+            class="rounded-t-3xl w-[100%] transform-gpu transition-transform scale-100 group-hover:scale-110"
+          />
+          <div class="p-8 border-t-2 border-[#f3f8ff]">
+            <h1 class="text-[#13182f] font-bold text-2xl group-hover:text-[#9a1b3a]">
+              Mercedes benz E250
+            </h1>
+            <p class="text-[#666e82] font-medium text-lg mt-5">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Quisquam voluptatum, quibusdam, quia, quod voluptates
+              voluptate voluptatibus quos doloribus quas voluptatem quidem.
+            </p>
+            <div class="flex items-center justify-between mt-5">
+              <p class="bg-[#f3f8ff] font-medium text-[#9a1b3a] py-4 px-6 rounded-full">
+                News
+              </p>
+              <p className="text-lg font-medium">July 20, 2023</p>
+              <div class="flex items-center font-medium">
+                <p class="group-hover:text-[#9a1b3a]">Explore</p>
+                <i class="fa-solid fa-arrow-right transform translate-x-0 group-hover:translate-x-2 group-hover:text-[#9a1b3a] transition-transform text-3xl">
+                </i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-[#ffffff]  swiper-slide rounded-3xl group overflow-hidden">
+        <div class="shadow-md">
+          <img
+            src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+            alt="doctor"
+            class="rounded-t-3xl w-[100%] transform-gpu transition-transform scale-100 group-hover:scale-110"
+          />
+          <div class="p-8 border-t-2 border-[#f3f8ff]">
+            <h1 class="text-[#13182f] font-bold text-2xl group-hover:text-[#9a1b3a]">
+              Mercedes benz E250
+            </h1>
+            <p class="text-[#666e82] font-medium text-lg mt-5">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Quisquam voluptatum, quibusdam, quia, quod voluptates
+              voluptate voluptatibus quos doloribus quas voluptatem quidem.
+            </p>
+            <div class="flex items-center justify-between mt-5">
+              <p class="bg-[#f3f8ff] font-medium text-[#9a1b3a] py-4 px-6 rounded-full">
+                News
+              </p>
+              <p className="text-lg font-medium">July 20, 2023</p>
+              <div class="flex items-center font-medium">
+                <p class="group-hover:text-[#9a1b3a]">Explore</p>
+                <i class="fa-solid fa-arrow-right transform translate-x-0 group-hover:translate-x-2 group-hover:text-[#9a1b3a] transition-transform text-3xl">
+                </i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div
   class="relative h-screen mb-28 text-white"
@@ -448,56 +470,6 @@
   </div>
 </div>
 
-<div class="bg-black py-8">
+<div class="py-8">
   <div phx-hook="Map" class="h-[50vh]  mx-auto  z-0 w-[80%]" id="map"></div>
 </div>
-
-<%!-- <.form let={f} for={@changeset} id="search-form" phx-change="validate" phx-submit="save"> --%>
-<%!-- <%= label(f, :type) %>
-      <%= select(
-        f,
-        :type,
-        [1,2,3], prompt: "Select Categories",
-        class:
-          "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
-        required: true
-      ) %> --%>
-<%!-- <%= label(f, :type) %>
-  <%= select(
-    f,
-    :type,
-    @categories,
-    class:
-      "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
-    required: true
-  ) %>
-
-  <%= error_tag(f, :type) %>
-
-  <%= label(f, :brand) %>
-  <%= select(
-    f,
-    :brand,
-    @models,
-    class:
-      "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
-    required: true
-  ) %>
-  <%= label(f, :year) %>
-  <%= text_input(f, :year) %>
-  <%= error_tag(f, :year) %>
-  <%= label(f, :min) %>
-  <%= text_input(f, :min) %>
-  <%= error_tag(f, :min) %>
-  <%= label(f, :max) %>
-  <%= text_input(f, :max) %>
-  <%= error_tag(f, :max) %>
-
-  <div>
-    <%= submit("Save", phx_disable_with: "Saving...") %>
-  </div>
-</.form> --%>
-
-<%!-- <%= for car <- @cars do %>
-  <p><%= car.title %></p>
-<% end %> --%>
