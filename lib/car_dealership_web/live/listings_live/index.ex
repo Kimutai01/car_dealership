@@ -59,6 +59,6 @@ defmodule CarDealershipWeb.ListingLive.Index do
 
     models = Models.get_models_by_body_type(params["name"])
 
-    {:noreply,socket |> assign(:models, models)}
+    {:noreply, socket |> assign(:models, models)}
   end
 end

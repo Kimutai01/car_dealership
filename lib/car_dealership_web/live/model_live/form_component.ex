@@ -10,7 +10,9 @@ defmodule CarDealershipWeb.ModelLive.FormComponent do
     {:ok,
      socket
      |> assign(assigns)
-     |> assign(:changeset, changeset)}
+     |> assign(:changeset, changeset)
+     |> assign(:uploaded_files, [])
+     |> allow_upload(:image, accept: ~w(.jpg .png .jpeg), max_entries: 1)}
   end
 
   @impl true
@@ -24,8 +26,42 @@ defmodule CarDealershipWeb.ModelLive.FormComponent do
   end
 
   def handle_event("save", %{"model" => model_params}, socket) do
-    save_model(socket, socket.assigns.action, model_params)
+    IO.inspect(model_params)
+
+    uploaded_files =
+      consume_uploaded_entries(socket, :image, fn %{path: path}, _entry ->
+        dest =
+          Path.join([:code.priv_dir(:car_dealership), "static", "uploads", Path.basename(path)])
+
+        # The `static/uploads` directory must exist for `File.cp!/2`
+        # and MyAppWeb.static_paths/0 should contain uploads to work,.
+        File.cp!(path, dest)
+        {:ok, "/uploads/" <> Path.basename(dest)}
+      end)
+
+    {:noreply, update(socket, :uploaded_files, &(&1 ++ uploaded_files))}
+
+    new_model_params = Map.put(model_params, "car_photo", List.first(uploaded_files))
+    IO.inspect(new_model_params)
+
+    save_model(socket, socket.assigns.action, new_model_params)
   end
+
+  # def handle_event("save", %{"model" => model_params}, socket) do
+  #   uploaded_files =
+  #     consume_uploaded_entries(socket, :image, fn %{path: path}, _entry ->
+  #       dest = Path.join([:code.priv_dir(:car_photo), "static", "uploads", Path.basename(path)])
+
+  #       # The `static/uploads` directory must exist for `File.cp!/2`
+  #       # and MyAppWeb.static_paths/0 should contain uploads to work,.
+  #       File.cp!(path, dest)
+  #       {:ok, "/uploads/" <> Path.basename(dest)}
+  #     end)
+  #   {:noreply, update(socket, :uploaded_files, &(&1 ++ uploaded_files))}
+
+  #   new_model_params = Map.put(model_params, "car_photo", List.first(uploaded_files))
+  #   save_model(socket, socket.assigns.action, new_model_params)
+  # end
 
   defp save_model(socket, :edit, model_params) do
     case Models.update_model(socket.assigns.model, model_params) do
@@ -38,6 +74,10 @@ defmodule CarDealershipWeb.ModelLive.FormComponent do
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, :changeset, changeset)}
     end
+  end
+
+  def handle_event("cancel-upload", %{"ref" => ref}, socket) do
+    {:noreply, cancel_upload(socket, :image, ref)}
   end
 
   defp save_model(socket, :add_models, model_params) do

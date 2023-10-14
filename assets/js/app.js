@@ -94,7 +94,7 @@ Hooks.BlogSwiper = {
       breakpoints: {
         // when window width is >= 768px (desktop)
         768: {
-          slidesPerView: 3,
+          slidesPerView: 2,
         },
         // when window width is < 768px (mobile)
         0: {

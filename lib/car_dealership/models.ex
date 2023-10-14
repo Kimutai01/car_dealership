@@ -120,4 +120,13 @@ defmodule CarDealership.Models do
 
     Repo.all(query)
   end
+
+  def get_featured_cars() do
+    query =
+      from m in Model,
+        where: m.is_featured == true,
+        select: m
+
+    Repo.all(query)
+  end
 end
