@@ -13,6 +13,7 @@ defmodule CarDealershipWeb.ListingLive.Index do
       |> Enum.map(fn x -> {x.name, x.id} end)
 
     models = Models.list_models()
+    IO.inspect(models)
 
     {:ok,
      socket
@@ -31,7 +32,7 @@ defmodule CarDealershipWeb.ListingLive.Index do
      socket
      |> assign(:max_value , params["model"]["max"])
      |> assign(:category , params["model"]["type"])
-      |> assign(:min_value , params["model"]["min"])
+     |> assign(:min_value , params["model"]["min"])
     }
   end
 
@@ -71,7 +72,14 @@ defmodule CarDealershipWeb.ListingLive.Index do
   def handle_event("categories", params, socket) do
     IO.inspect(params)
 
-    models = Models.get_models_by_body_type(params["name"])
+
+    models = if params["name"] != "all" do
+      Models.get_models_by_body_type(params["name"])
+    else
+      Models.list_models()
+    end
+
+
 
     {:noreply, socket |> assign(:models, models)}
   end
