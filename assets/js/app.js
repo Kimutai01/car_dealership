@@ -97,9 +97,34 @@ Hooks.BlogSwiper = {
           slidesPerView: 2,
         },
         // when window width is < 768px (mobile)
-        0: {
-          slidesPerView: 1,
+        0: {},
+      },
+    });
+  },
+};
+
+Hooks.Blog1Swiper = {
+  mounted() {
+    const swiper = new Swiper(".blogswiper1", {
+      // Optional parameters
+      direction: "horizontal",
+      loop: true,
+      autoplay: {
+        delay: 5000, // Autoplay delay in milliseconds (5 seconds in this example)
+      },
+
+      // If we need pagination
+
+      // Navigation arrows
+
+      // Responsive breakpoints
+      breakpoints: {
+        // when window width is >= 768px (desktop)
+        768: {
+          slidesPerView: 2,
         },
+        // when window width is < 768px (mobile)
+        0: {},
       },
     });
   },

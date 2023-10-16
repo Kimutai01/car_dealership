@@ -87,27 +87,27 @@
       >
         <a
           href="#swiper"
-          class="     uppercase hover:scale-105 transition-all duration-500 ease-in-out  md:ml-8 ml-2"
+          class="uppercase hover:scale-105 transition-all duration-500 ease-in-out  md:ml-8 ml-2"
         >
           Home
         </a>
 
         <a
           href="#artists"
-          class="    uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+          class="uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
         >
           Artists
         </a>
 
         <a
           href="#footer"
-          class="    uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+          class="uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
         >
           Contact
         </a>
         <a
           href="#ourteam"
-          class="    uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+          class="uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
         >
           Team
         </a>
@@ -204,10 +204,10 @@
   </div>
 </div>
 
-<div class="flex gap-20 mx-20">
-  <div class="w-[50%]">
+<div class="flex flex-col md:flex-row gap-20 mx-10 md:mx-20">
+  <div class="md:w-[50%]">
     <p class="text-sm">CLASSICS</p>
-    <h2 class="font-extrabold text-5xl mt-8 ">
+    <h2 class="font-extrabold text-3xl md:text-5xl mt-8 ">
       Discover A New Level Of Comfort
     </h2>
     <p class="mt-8 text-[#535353] text-lg">
@@ -231,7 +231,7 @@
   <div class="swiper-wrapper py-8 gap-10">
     <%= if @models do %>
       <%= for model <- @models do %>
-        <div class="bg-[#ffffff]  swiper-slide rounded-3xl group overflow-hidden">
+        <div class="bg-[#ffffff] swiper-slide rounded-3xl group overflow-hidden">
           <div class="shadow-md">
             <img
               src={model.car_photo}
@@ -268,7 +268,7 @@
 </div>
 
 <div class="bg-[url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=400&q=60')] px-10 bg-no-repeat bg-center bg-fixed bg-cover h-screen text-white">
-  <div class="w-[40%]">
+  <div class="md:w-[40%]">
     <h4 class="uppercase pt-20 font-bold">Newsletter</h4>
     <h2 class="mt-10 font-bold text-4xl">
       Sign Up And Never Miss A Deal Again
@@ -290,7 +290,7 @@
 
 <div class="pt-10 mx-5">
   <p class="uppercase">We recommend</p>
-  <h2 class="font-extrabold pt-10 text-5xl">Latest Vehicles</h2>
+  <h2 class="font-extrabold pt-10 text-3xl md:text-5xl">Latest Vehicles</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-10 w-full">
   <% if @latest_cars do %>
     <%= for latest <- @latest_cars do %>
@@ -336,17 +336,17 @@
   </div>
 </div>
 
-<div class="bg-[#000] mt-20 p-20 text-white flex gap-12">
+<div class="bg-[#000] mt-20 p-8 md:p-20 text-white flex flex-col md:flex-row gap-12">
   <div class="flex gap-5">
-    <p class="font-extrabold text-5xl w-[40%]">10 +</p>
+    <p class="font-extrabold text-3xl md:text-5xl w-[100%] md:w-[40%]">10 +</p>
     <p>
       Having been in the car dealership industry for 10 years, we're proud
       to say that we've seen it all.
     </p>
   </div>
-  <div class="border-l border-white h-20"></div>
+  <div class="md:border-l border-t-2 border-white md:h-20"></div>
   <div class="flex gap-5">
-    <p class="font-extrabold text-5xl w-[40%]">5 K</p>
+    <p class="font-extrabold text-3xl md:text-5xl w-[40%]">5 K</p>
     <p>
       Selling 5,000 cars is no small feat, and we're incredibly proud that
       we have achieved this milestone.
@@ -360,23 +360,21 @@
 
   <h1 class="text-5xl font-bold text-center mt-5">Our blog world</h1>
 
-  <div class="blogswiper  px-5 mt-20 pb-20" phx-hook="BlogSwiper" id="blogswiper">
+  <div class="blogswiper1  px-5 mt-20 pb-20" phx-hook="Blog1Swiper" id="blogswiper1">
     <div class="swiper-wrapper py-8 gap-10">
       <div class="bg-[#ffffff]  swiper-slide rounded-3xl group overflow-hidden">
         <div class="shadow-md">
           <img
-            src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-            alt="doctor"
-            class="rounded-t-3xl w-[100%] transform-gpu transition-transform scale-100 group-hover:scale-110"
+            src="https://images.unsplash.com/photo-1610647752706-3bb12232b3ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGNhciUyMG1pbGVhZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60"
+            alt="milage"
+            class="rounded-t-3xl  md:h-[400px] w-[100%] transform-gpu transition-transform scale-100 group-hover:scale-110"
           />
           <div class="p-8 border-t-2 border-[#f3f8ff]">
             <h1 class="text-[#13182f] font-bold text-2xl group-hover:text-[#9a1b3a]">
-              Mercedes benz E250
+              Why you should check mileage before buying a car
             </h1>
             <p class="text-[#666e82] font-medium text-lg mt-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Quisquam voluptatum, quibusdam, quia, quod voluptates
-              voluptate voluptatibus quos doloribus quas voluptatem quidem.
+             Checking the mileage before buying a car is crucial for several reasons. First, it helps you assess the vehicle's overall wear and tear, as lower mileage typically indicates less mechanical stress and potentially fewer repairs needed in the near future.
             </p>
             <div class="flex items-center justify-between mt-5">
               <p class="bg-[#f3f8ff] font-medium text-[#9a1b3a] py-4 px-6 rounded-full">
@@ -397,18 +395,16 @@
       <div class="bg-[#ffffff]  swiper-slide rounded-3xl group overflow-hidden">
         <div class="shadow-md">
           <img
-            src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-            alt="doctor"
-            class="rounded-t-3xl w-[100%] transform-gpu transition-transform scale-100 group-hover:scale-110"
+            src="https://www.stablevehiclecontracts.co.uk/uploads/2022-range-rover-revealed-price-specs-release-date-cover.jpg"
+            alt="range rover"
+            class="rounded-t-3xl w-[100%] h-[400px] transform-gpu transition-transform scale-100 group-hover:scale-110"
           />
           <div class="p-8 border-t-2 border-[#f3f8ff]">
             <h1 class="text-[#13182f] font-bold text-2xl group-hover:text-[#9a1b3a]">
-              Mercedes benz E250
+              Range rover 2022, the new gem?
             </h1>
             <p class="text-[#666e82] font-medium text-lg mt-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Quisquam voluptatum, quibusdam, quia, quod voluptates
-              voluptate voluptatibus quos doloribus quas voluptatem quidem.
+              The 2022 Range Rover is a luxurious and highly capable SUV that combines cutting-edge technology with timeless elegance. With its refined interior, advanced infotainment system, and a wide range of powertrain options, including hybrid and electric models, it offers both opulence and environmental responsibility
             </p>
             <div class="flex items-center justify-between mt-5">
               <p class="bg-[#f3f8ff] font-medium text-[#9a1b3a] py-4 px-6 rounded-full">
@@ -433,12 +429,10 @@
           />
           <div class="p-8 border-t-2 border-[#f3f8ff]">
             <h1 class="text-[#13182f] font-bold text-2xl group-hover:text-[#9a1b3a]">
-              Mercedes benz E250
+              Audi Q5 vs Porsche Cayenne
             </h1>
             <p class="text-[#666e82] font-medium text-lg mt-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Quisquam voluptatum, quibusdam, quia, quod voluptates
-              voluptate voluptatibus quos doloribus quas voluptatem quidem.
+              he Audi Q5 and Porsche Cayenne are both high-quality SUVs, but they cater to slightly different markets and have distinct characteristics. Here's a brief comparison of the two
             </p>
             <div class="flex items-center justify-between mt-5">
               <p class="bg-[#f3f8ff] font-medium text-[#9a1b3a] py-4 px-6 rounded-full">
@@ -462,10 +456,10 @@
   class="relative h-screen mb-28 text-white"
   style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)), url('https://images.unsplash.com/photo-1536617621572-1d5f1e6269a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHRlc2xhJTIwbW9kZWw1fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60'); background-repeat: no-repeat; background-position: center center; background-size: cover; height: 70vh;"
 >
-  <div class="pt-28 px-20 flex gap-20 items-center ">
+  <div class="pt-10 md:pt-28 px-5 md:px-20 flex flex-col md:flex-row gap-10 md:gap-20 items-center ">
     <div class="w-[70%]">
-      <h1 class="font-bold text-5xl">Get A Fair Price For Your Car:</h1>
-      <h2 class="font-bold text-5xl">Sell To Us Today!</h2>
+      <h1 class="font-bold text-3xl md:text-5xl">Get A Fair Price For Your Car:</h1>
+      <h2 class="font-bold text-3xl md:text-5xl">Sell To Us Today!</h2>
       <p class="pt-10">
         We are committed to providing our customers with exceptional
         service, competitive pricing, and a wide range of vehicles to choose
