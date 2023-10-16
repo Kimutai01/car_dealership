@@ -18,40 +18,54 @@ defmodule CarDealershipWeb.ListingLive.Index do
      socket
      |> assign(:changeset, changeset)
      |> assign(:categories, categories)
+     |> assign(:max_value , "")
+      |> assign(:min_value , "")
+      |> assign(:category , "")
      |> assign(:models, models)}
   end
 
   def handle_event("validate", params, socket) do
-    IO.inspect(params)
+
+
+    {:noreply,
+     socket
+     |> assign(:max_value , params["model"]["max"])
+     |> assign(:category , params["model"]["type"])
+      |> assign(:min_value , params["model"]["min"])
+    }
+  end
+
+  def handle_event("save", _ , socket) do
 
     minimum_price =
-      if params["model"]["min"] != "" do
-        String.to_integer(params["model"]["min"])
+      if socket.assigns.min_value != "" do
+        String.to_integer(socket.assigns.min_value)
       else
         0
       end
 
     maximum_price =
-      if params["model"]["max"] != "" do
-        String.to_integer(params["model"]["max"])
+      if socket.assigns.max_value != "" do
+        String.to_integer(socket.assigns.max_value)
       else
         0
       end
 
-    models = Categories.get_category!(String.to_integer(params["model"]["type"])).models
-    models = Models.filter_model(minimum_price, maximum_price)
 
-    # Enum.filter(models, fn x -> x.year == year end)
-    #  |> IO.inspect()
-    # |> Enum.filter(fn x -> x.price >= minimum_price end)
-    # |> Enum.filter(fn x -> x.price <= maximum_price end)
-    # |> Enum.map(fn x -> {x.name, x.id} end)
 
-    IO.inspect(socket.assigns.changeset)
 
-    {:noreply,
+
+
+    models = Models.filter_model(String.to_integer(socket.assigns.category),minimum_price, maximum_price)
+
+
+    IO.inspect(models)
+
+     {:noreply,
      socket
+
      |> assign(:models, models)}
+
   end
 
   def handle_event("categories", params, socket) do

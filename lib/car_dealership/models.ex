@@ -102,9 +102,10 @@ defmodule CarDealership.Models do
     Model.changeset(model, attrs)
   end
 
-  def filter_model(minimum_price, maximum_price) do
+  def filter_model(category_id,minimum_price, maximum_price) do
     query =
       from m in Model,
+        where: m.category_id == ^category_id,
         where: m.price >= ^minimum_price,
         where: m.price <= ^maximum_price,
         select: m

@@ -1,10 +1,11 @@
-<div>
+<div >
   <.form let={f} for={@changeset} id="search-form" phx-change="validate" phx-submit="save">
     <%= select(
       f,
       :type,
       @categories,
       prompt: "Select a category",
+      value: @category,
       class:
         "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",
       required: true
@@ -13,11 +14,13 @@
     <%= error_tag(f, :type) %>
 
     <%= label(f, :min) %>
-    <%= text_input(f, :min) %>
+    <%= number_input(f, :min , value: @min_value) %>
     <%= error_tag(f, :min) %>
     <%= label(f, :max) %>
-    <%= text_input(f, :max) %>
+    <%= number_input(f, :max , value: @max_value) %>
     <%= error_tag(f, :max) %>
+
+    <%= submit "Search", class: "bg-blue-500 text-white p-3" %>
   </.form>
 </div>
 <div class="flex gap-10">
@@ -39,7 +42,7 @@
             <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
               <div class="">
                 <img
-                  src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+                  src={model.car_photo}
                   alt=""
                   class="w-full h-full object-cover"
                 />
@@ -54,7 +57,9 @@
           </div>
 
           <div class="mt-4">
-            <h2>Mercedes Benz E250</h2>
+            <h2>
+            <%=model.name%>
+            </h2>
           </div>
         </div>
       </a>

@@ -14,7 +14,7 @@
 
   <div class="flex gap-2 items-center">
     <a
-      href="#artists"
+      href=""
       class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
     >
       Blog
@@ -26,12 +26,12 @@
     >
       Contact
     </a>
-    <a
-      href="#footer"
-      class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
-    >
-      All cars
-    </a>
+    <%= live_redirect("Listings",
+      to: Routes.listing_index_path(@socket, :index),
+      class:
+        "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+    ) %>
+      
     <a
       href="#footer"
       class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
@@ -229,69 +229,41 @@
 
 <div class="blogswiper  px-5 mt-20 pb-20" phx-hook="BlogSwiper" id="blogswiper">
   <div class="swiper-wrapper py-8 gap-10">
-    <%= for model <- @models do %>
-      <div class="bg-[#ffffff]  swiper-slide rounded-3xl group overflow-hidden">
-        <div class="shadow-md">
-          <img
-            src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-            alt="doctor"
-            class="rounded-t-3xl w-[100%] transform-gpu transition-transform scale-100 group-hover:scale-110"
-          />
-          <div class="p-8 border-t-2 border-[#f3f8ff]">
-            <h1 class="text-[#13182f] font-bold text-2xl group-hover:text-[#9a1b3a]">
-              Mercedes benz E250
-            </h1>
-            <p class="text-[#666e82] font-medium text-lg mt-5">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Quisquam voluptatum, quibusdam, quia, quod voluptates
-              voluptate voluptatibus quos doloribus quas voluptatem quidem.
-            </p>
-            <div class="flex items-center justify-between mt-5">
-              <p class="bg-[#f3f8ff] font-medium text-[#9a1b3a] py-4 px-6 rounded-full">
-                Featured
+    <%= if @models do %>
+      <%= for model <- @models do %>
+        <div class="bg-[#ffffff]  swiper-slide rounded-3xl group overflow-hidden">
+          <div class="shadow-md">
+            <img
+              src={model.car_photo}
+              alt="doctor"
+              class="rounded-t-3xl h-[500px] w-[100%] transform-gpu transition-transform scale-100 group-hover:scale-110"
+            />
+            <div class="p-8 border-t-2 border-[#f3f8ff]">
+              <h1 class="text-[#13182f] font-bold text-2xl group-hover:text-[#9a1b3a]">
+                <%= model.name %>
+              </h1>
+              <p class="text-[#666e82] font-medium text-lg mt-5">
+                <%= model.description %>
               </p>
+              <div class="flex items-center justify-between mt-5">
+                <p class="bg-[#f3f8ff] font-medium text-[#9a1b3a] py-4 px-6 rounded-full">
+                  Featured
+                </p>
 
-              <div class="flex items-center font-medium">
-                <p class="group-hover:text-[#9a1b3a]">Explore</p>
-                <i class="fa-solid fa-arrow-right transform translate-x-0 group-hover:translate-x-2 group-hover:text-[#9a1b3a] transition-transform text-3xl">
-                </i>
+                <div class="flex items-center font-medium">
+                  <p class="group-hover:text-[#9a1b3a]">Explore</p>
+                  <i class="fa-solid fa-arrow-right transform translate-x-0 group-hover:translate-x-2 group-hover:text-[#9a1b3a] transition-transform text-3xl">
+                  </i>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
+    <% else %>
+      <h1 class="text-5xl">No Cars at the moment</h1>
     <% end %>
 
-    <div class="bg-[#ffffff]  swiper-slide rounded-3xl group overflow-hidden">
-      <div class="shadow-md">
-        <img
-          src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-          alt="doctor"
-          class="rounded-t-3xl w-[100%] transform-gpu transition-transform scale-100 group-hover:scale-110"
-        />
-        <div class="p-8 border-t-2 border-[#f3f8ff]">
-          <h1 class="text-[#13182f] font-bold text-2xl group-hover:text-[#9a1b3a]">
-            Mercedes benz E250
-          </h1>
-          <p class="text-[#666e82] font-medium text-lg mt-5">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Quisquam voluptatum, quibusdam, quia, quod voluptates
-            voluptate voluptatibus quos doloribus quas voluptatem quidem.
-          </p>
-          <div class="flex items-center justify-between mt-5">
-            <p class="bg-[#f3f8ff] font-medium text-[#9a1b3a] py-4 px-6 rounded-full">
-              Featured
-            </p>
-
-            <div class="flex items-center font-medium">
-              <p class="group-hover:text-[#9a1b3a]">Explore</p>
-              <i class="fa-solid fa-arrow-right transform translate-x-0 group-hover:translate-x-2 group-hover:text-[#9a1b3a] transition-transform text-3xl">
-              </i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -320,6 +292,7 @@
   <p class="uppercase">We recommend</p>
   <h2 class="font-extrabold pt-10 text-5xl">Latest Vehicles</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-10 w-full">
+  <% if @latest_cars do %>
     <%= for latest <- @latest_cars do %>
       <div class="relative mx-auto w-full">
         <a class="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
@@ -328,7 +301,7 @@
               <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
                 <div class="">
                   <img
-                    src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+                    src={latest.car_photo}
                     alt=""
                     class="w-full h-full object-cover"
                   />
@@ -343,12 +316,23 @@
             </div>
 
             <div class="mt-4">
-              <h2>Mercedes Benz E250</h2>
+              <h2>
+                <a
+                  href="#"
+                  class="text-lg font-medium text-gray-700 hover:text-gray-900"
+                >
+                  <%= latest.name %>
+                </a>
+              
+              </h2>
             </div>
           </div>
         </a>
       </div>
     <% end %>
+  <% else %>
+    <h1 class="text-5xl text-[#000]">No Cars at the moment</h1>
+  <% end %>
   </div>
 </div>
 
