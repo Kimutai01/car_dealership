@@ -14,8 +14,12 @@ defmodule CarDealershipWeb.ModelLive.Show do
     model = Models.get_model!(id)
     IO.inspect(model.body_type)
 
-    models = Models.get_models_by_body_type(model.body_type) |> Enum.reject(fn x -> x.id == String.to_integer(id) end)
+    models =
+      Models.get_models_by_body_type(model.body_type)
+      |> Enum.reject(fn x -> x.id == String.to_integer(id) end)
+
     IO.inspect(models)
+
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
