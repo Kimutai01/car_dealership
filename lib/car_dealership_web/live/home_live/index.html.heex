@@ -31,7 +31,7 @@
       class:
         "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
     ) %>
-      
+
     <a
       href="#footer"
       class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
@@ -263,7 +263,6 @@
     <% else %>
       <h1 class="text-5xl">No Cars at the moment</h1>
     <% end %>
-
   </div>
 </div>
 
@@ -292,47 +291,39 @@
   <p class="uppercase">We recommend</p>
   <h2 class="font-extrabold pt-10 text-3xl md:text-5xl">Latest Vehicles</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-10 w-full">
-  <% if @latest_cars do %>
-    <%= for latest <- @latest_cars do %>
-      <div class="relative mx-auto w-full">
-        <a class="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
-          <div class="shadow p-4 rounded-lg bg-white">
-            <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
-              <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
-                <div class="">
-                  <img
-                    src={latest.car_photo}
-                    alt=""
-                    class="w-full h-full object-cover"
-                  />
+    <%= if @latest_cars do %>
+      <%= for latest <- @latest_cars do %>
+        <div class="relative mx-auto w-full">
+          <a class="relative inline-block duration-300 ease-in-out transition-transform transform hover:-translate-y-2 w-full">
+            <div class="shadow p-4 rounded-lg bg-white">
+              <div class="flex justify-center relative rounded-lg overflow-hidden h-52">
+                <div class="transition-transform duration-500 transform ease-in-out hover:scale-110 w-full">
+                  <div class="">
+                    <img src={latest.car_photo} alt="" class="w-full h-full object-cover" />
+                  </div>
                 </div>
+
+                <div class="absolute flex justify-center bottom-0 mb-3"></div>
+
+                <span class="absolute top-0 left-0 inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-[#9a1b3a] text-sm font-medium text-white select-none">
+                  Latest
+                </span>
               </div>
 
-              <div class="absolute flex justify-center bottom-0 mb-3"></div>
-
-              <span class="absolute top-0 left-0 inline-flex mt-3 ml-3 px-3 py-2 rounded-lg z-10 bg-[#9a1b3a] text-sm font-medium text-white select-none">
-                Latest
-              </span>
+              <div class="mt-4">
+                <h2>
+                  <a href="#" class="text-lg font-medium text-gray-700 hover:text-gray-900">
+                    <%= latest.name %>
+                  </a>
+                </h2>
+              </div>
             </div>
-
-            <div class="mt-4">
-              <h2>
-                <a
-                  href="#"
-                  class="text-lg font-medium text-gray-700 hover:text-gray-900"
-                >
-                  <%= latest.name %>
-                </a>
-              
-              </h2>
-            </div>
-          </div>
-        </a>
-      </div>
+          </a>
+        </div>
+      <% end %>
+    <% else %>
+      <h1 class="text-5xl text-[#000]">No Cars at the moment</h1>
     <% end %>
-  <% else %>
-    <h1 class="text-5xl text-[#000]">No Cars at the moment</h1>
-  <% end %>
   </div>
 </div>
 
@@ -374,7 +365,7 @@
               Why you should check mileage before buying a car
             </h1>
             <p class="text-[#666e82] font-medium text-lg mt-5">
-             Checking the mileage before buying a car is crucial for several reasons. First, it helps you assess the vehicle's overall wear and tear, as lower mileage typically indicates less mechanical stress and potentially fewer repairs needed in the near future.
+              Checking the mileage before buying a car is crucial for several reasons. First, it helps you assess the vehicle's overall wear and tear, as lower mileage typically indicates less mechanical stress and potentially fewer repairs needed in the near future.
             </p>
             <div class="flex items-center justify-between mt-5">
               <p class="bg-[#f3f8ff] font-medium text-[#9a1b3a] py-4 px-6 rounded-full">

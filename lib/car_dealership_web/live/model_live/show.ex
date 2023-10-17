@@ -10,10 +10,17 @@ defmodule CarDealershipWeb.ModelLive.Show do
 
   @impl true
   def handle_params(%{"id" => id}, _, socket) do
+    IO.inspect(id)
+    model = Models.get_model!(id)
+    IO.inspect(model.body_type)
+
+    models = Models.get_models_by_body_type(model.body_type) |> Enum.reject(fn x -> x.id == String.to_integer(id) end)
+    IO.inspect(models)
     {:noreply,
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
-     |> assign(:model, Models.get_model!(id))}
+     |> assign(:model, model)
+     |> assign(:models, models)}
   end
 
   defp page_title(:show), do: "Show Model"
