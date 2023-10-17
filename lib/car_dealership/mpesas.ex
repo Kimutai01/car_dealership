@@ -186,6 +186,4 @@ defmodule CarDealership.Mpesas do
     {:error,
      "Unable to lock subscriber, a transaction is already in process for the current subscriber"}
   end
-
-
 end

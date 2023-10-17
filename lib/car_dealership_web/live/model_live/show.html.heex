@@ -156,7 +156,9 @@
     <p class="mt-10"><strong class="font-bold">Fuel</strong> :<%= @model.fuel_type %></p>
     <div class="flex gap-5">
       <button class="mt-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        book a test drive
+        <a href={Routes.model_show_path(@socket, :book_test_drive, @model)}>
+          book a test drive
+        </a>
       </button>
       <button class="mt-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         <a href={Routes.model_show_path(@socket, :add_quote, @model)}>
