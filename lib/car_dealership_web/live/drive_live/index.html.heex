@@ -1,0 +1,56 @@
+<h1>Listing Drives</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <.modal return_to={Routes.drive_index_path(@socket, :index)}>
+    <.live_component
+      module={CarDealershipWeb.DriveLive.FormComponent}
+      id={@drive.id || :new}
+      title={@page_title}
+      action={@live_action}
+      drive={@drive}
+      return_to={Routes.drive_index_path(@socket, :index)}
+    />
+  </.modal>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Phone number</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="drives">
+    <%= for drive <- @drives do %>
+      <tr id={"drive-#{drive.id}"}>
+        <td><%= drive.first_name %></td>
+        <td><%= drive.last_name %></td>
+        <td><%= drive.email %></td>
+        <td><%= drive.phone_number %></td>
+
+        <td>
+          <span>
+            <%= live_redirect("Show", to: Routes.drive_show_path(@socket, :show, drive)) %>
+          </span>
+          <span>
+            <%= live_patch("Edit", to: Routes.drive_index_path(@socket, :edit, drive)) %>
+          </span>
+          <span>
+            <%= link("Delete",
+              to: "#",
+              phx_click: "delete",
+              phx_value_id: drive.id,
+              data: [confirm: "Are you sure?"]
+            ) %>
+          </span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch("New Drive", to: Routes.drive_index_path(@socket, :new)) %></span>

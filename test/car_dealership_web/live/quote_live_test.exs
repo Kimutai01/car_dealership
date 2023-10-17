@@ -4,8 +4,18 @@ defmodule CarDealershipWeb.QuoteLiveTest do
   import Phoenix.LiveViewTest
   import CarDealership.QuotesFixtures
 
-  @create_attrs %{first_name: "some first_name", last_name: "some last_name", email: "some email", phone_number: "some phone_number"}
-  @update_attrs %{first_name: "some updated first_name", last_name: "some updated last_name", email: "some updated email", phone_number: "some updated phone_number"}
+  @create_attrs %{
+    first_name: "some first_name",
+    last_name: "some last_name",
+    email: "some email",
+    phone_number: "some phone_number"
+  }
+  @update_attrs %{
+    first_name: "some updated first_name",
+    last_name: "some updated last_name",
+    email: "some updated email",
+    phone_number: "some updated phone_number"
+  }
   @invalid_attrs %{first_name: nil, last_name: nil, email: nil, phone_number: nil}
 
   defp create_quote(_) do

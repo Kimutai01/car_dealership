@@ -1,0 +1,42 @@
+<h1>Show Drive</h1>
+
+<%= if @live_action in [:edit] do %>
+  <.modal return_to={Routes.drive_show_path(@socket, :show, @drive)}>
+    <.live_component
+      module={CarDealershipWeb.DriveLive.FormComponent}
+      id={@drive.id}
+      title={@page_title}
+      action={@live_action}
+      drive={@drive}
+      return_to={Routes.drive_show_path(@socket, :show, @drive)}
+    />
+  </.modal>
+<% end %>
+
+<ul>
+  <li>
+    <strong>First name:</strong>
+    <%= @drive.first_name %>
+  </li>
+
+  <li>
+    <strong>Last name:</strong>
+    <%= @drive.last_name %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @drive.email %>
+  </li>
+
+  <li>
+    <strong>Phone number:</strong>
+    <%= @drive.phone_number %>
+  </li>
+</ul>
+
+<span>
+  <%= live_patch("Edit", to: Routes.drive_show_path(@socket, :edit, @drive), class: "button") %>
+</span>
+|
+<span><%= live_redirect("Back", to: Routes.drive_index_path(@socket, :index)) %></span>

@@ -50,7 +50,9 @@ defmodule CarDealership.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev}
+      {:tailwind, "~> 0.1", runtime: Mix.env() == :dev},
+      {:mpesa, "~> 0.1.2"},
+      {:ex_heroicons, "~> 2.0.0"}
     ]
   end
 

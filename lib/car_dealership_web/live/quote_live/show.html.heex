@@ -14,7 +14,6 @@
 <% end %>
 
 <ul>
-
   <li>
     <strong>First name:</strong>
     <%= @quote.first_name %>
@@ -34,8 +33,10 @@
     <strong>Phone number:</strong>
     <%= @quote.phone_number %>
   </li>
-
 </ul>
 
-<span><%= live_patch "Edit", to: Routes.quote_show_path(@socket, :edit, @quote), class: "button" %></span> |
-<span><%= live_redirect "Back", to: Routes.quote_index_path(@socket, :index) %></span>
+<span>
+  <%= live_patch("Edit", to: Routes.quote_show_path(@socket, :edit, @quote), class: "button") %>
+</span>
+|
+<span><%= live_redirect("Back", to: Routes.quote_index_path(@socket, :index)) %></span>

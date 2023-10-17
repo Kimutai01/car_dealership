@@ -38,7 +38,10 @@ defmodule CarDealershipWeb.Router do
 
     live "/cars/:id", ModelLive.Show, :show
     live "/cars/:id/add_quote", ModelLive.Show, :add_quote
+    live "/cars/:id/book_test_drive", ModelLive.Show, :book_test_drive
     live "/models/:id/show/edit", ModelLive.Show, :edit
+
+    live "/dashboard", DashboardLive.Index, :index
 
     live "/models/:id/models", ModelLive.Show, :add_models
 
@@ -65,6 +68,13 @@ defmodule CarDealershipWeb.Router do
 
     # live "/cars/:id", CarLive.Show, :show
     # live "/cars/:id/show/edit", CarLive.Show, :edit
+
+    live "/drives", DriveLive.Index, :index
+    live "/drives/new", DriveLive.Index, :new
+    live "/drives/:id/edit", DriveLive.Index, :edit
+
+    live "/drives/:id", DriveLive.Show, :show
+    live "/drives/:id/show/edit", DriveLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.
@@ -84,8 +94,6 @@ defmodule CarDealershipWeb.Router do
 
     scope "/" do
       pipe_through :browser
-
-      live_dashboard "/dashboard", metrics: CarDealershipWeb.Telemetry
     end
   end
 

@@ -217,6 +217,104 @@ Hooks.Navbar = {
   },
 };
 
+Hooks.Chart = {
+  mounted() {
+    // console.log(document.getElementById("gate_tickets").innerHTML);
+    new Chart("myChart", {
+      type: "pie",
+      color: "white",
+      data: {
+        labels: ["Gate Tickets", "Online Tickets", "Complimentary Tickets"],
+        datasets: [
+          {
+            label: "Gate ,  Online and Complimentary Tickets",
+            data: [10, 15, 20],
+            backgroundColor: ["yellow", "green", "blue"],
+          },
+        ],
+      },
+    });
+  },
+};
+Hooks.Chart2 = {
+  mounted() {
+    new Chart("myChart2", {
+      type: "doughnut",
+      color: "white",
+      data: {
+        labels: ["Normal Tickets", "Promo Tickets"],
+        datasets: [
+          {
+            label: "Normal and Promo Tickets",
+            data: [50, 52],
+            backgroundColor: ["green", "yellow"],
+          },
+        ],
+      },
+    });
+  },
+};
+
+Hooks.Chart3 = {
+  mounted() {
+    new Chart("myChart3", {
+      type: "polarArea",
+      color: "white",
+      data: {
+        labels: ["Early Bird", "Flash Sale ", "Advanced "],
+        datasets: [
+          {
+            label: "Event Tickets",
+            data: [10, 15, 20],
+            backgroundColor: ["red", "green", "yellow"],
+          },
+        ],
+      },
+    });
+  },
+};
+// Hooks.Chart4 = {
+//   mounted() {
+//     // Get an array of promo code names
+//     const promoCodeNames = 10;
+
+//     const randomColors = promoCodeNames.map(() => getRandomColor());
+
+//     function getRandomColor() {
+//       const letters = "0123456789ABCDEF";
+//       let color = "#";
+//       for (let i = 0; i < 6; i++) {
+//         color += letters[Math.floor(Math.random() * 16)];
+//       }
+//       return color;
+//     }
+
+//     // Create a chart
+//     new Chart("myChart4", {
+//       type: "bar",
+//       data: {
+//         labels: promoCodeNames,
+//         datasets: [
+//           {
+//             label: "PromoCode Tickets",
+//             data: 50,
+//             backgroundColor: randomColors,
+//             borderWidth: 1,
+//             borderColor: "white",
+//           },
+//         ],
+//       },
+//       options: {
+//         scales: {
+//           y: {
+//             beginAtZero: true,
+//           },
+//         },
+//       },
+//     });
+//   },
+// };
+
 // Hooks.Editor = {
 //   mounted() {
 //     // Wait for the DOM to be fully loaded

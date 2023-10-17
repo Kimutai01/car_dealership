@@ -39,6 +39,20 @@
   </.modal>
 <% end %>
 
+<%= if @live_action in [:book_test_drive] do %>
+  <.modal return_to={Routes.model_show_path(@socket, :show, @model)}>
+    <.live_component
+      module={CarDealershipWeb.DriveLive.FormComponent}
+      id={@drive.id || :new}
+      title={@page_title}
+      action={@live_action}
+      drive={@drive}
+      model={@model}
+      return_to={Routes.model_show_path(@socket, :show, @model)}
+    />
+  </.modal>
+<% end %>
+
 <%!-- <ul>
   <li>
     <strong>Name:</strong>
@@ -47,6 +61,81 @@
 
  
 </ul> --%>
+<%= if @error_modal == true do %>
+  <div class="fixed poppins-regular  shadow-xl h-[100vh] bg-white/60  inset-0  z-50 flex flex-col  justify-center items-center  mx-auto">
+    <div class="bg-white shadow-xl  rounded-xl shadow-gray-200 md:w-[500px] w-[300px]  flex flex-col items-center  h-[400px]">
+      <div class="flex flex-col w-[100%] p-2">
+        <div class="flex justify-between items-center">
+          <h1 class="font-extrabold text-transparent text-xl bg-red-500">
+            Payment Unsuccesful
+          </h1>
+
+          <div
+            class="cursor-pointer h-[20px] w-[20px] flex justify-center items-center rounded-full shadow-xl shadow-gray-400"
+            phx-click="close_error_modal"
+          >
+            <%= Heroicons.icon("x-mark",
+              type: "solid",
+              class: "h-[20px] font-bold w-[20px]"
+            ) %>
+          </div>
+        </div>
+
+        <p class="bg-gradient-to-r from-purple-300 to-white w-[100%] h-[2px] my-2" />
+      </div>
+
+      <div class="flex flex-col justify-center items-center">
+        <%= Heroicons.icon("x-mark",
+          type: "solid",
+          class: "h-48  text-red-500  font-bold w-48"
+        ) %>
+        <div class="flex flex-col justify-center items-center text-center">
+          <p class=" text-2xl jakrata-regular ">
+            <%= @error_message %>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<%= if @success_modal == true do %>
+  <div class="fixed poppins-regular  shadow-xl h-[100vh] bg-white/60  inset-0  z-50 flex flex-col  justify-center items-center  mx-auto">
+    <div class="bg-white shadow-xl  rounded-xl shadow-gray-200 md:w-[500px] w-[300px]  flex flex-col items-center  h-[400px]">
+      <div class="flex flex-col w-[100%] p-2">
+        <div class="flex justify-between items-center">
+          <h1 class="font-extrabold text-transparent text-xl  bg-blue-500">
+            Payment Successful
+          </h1>
+
+          <div
+            class="cursor-pointer h-[20px] w-[20px] flex justify-center items-center rounded-full shadow-xl shadow-gray-400"
+            phx-click="close_success_modal"
+          >
+            <%= Heroicons.icon("x-mark",
+              type: "solid",
+              class: "h-[20px] font-bold w-[20px]"
+            ) %>
+          </div>
+        </div>
+
+        <p class="bg-gradient-to-r from-purple-300 to-white w-[100%] h-[2px] my-2" />
+      </div>
+
+      <div class="flex flex-col justify-center items-center">
+        <%= Heroicons.icon("check",
+          type: "solid",
+          class: "h-48  text-green-500  font-bold w-48"
+        ) %>
+        <div class="flex flex-col justify-center items-center text-center">
+          <p class=" text-2xl jakrata-regular ">
+            The Payment was successful , you will recieve a confirmation email
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 <div class="flex flex-col md:flex-row gap-12 mb-10 items-center mx-5 md:mx-20 mt-10">
   <div class="md:w-[70%]">
     <img src={@model.car_photo} alt="" />
@@ -70,7 +159,9 @@
         book a test drive
       </button>
       <button class="mt-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        Ask for a quote
+        <a href={Routes.model_show_path(@socket, :add_quote, @model)}>
+          Ask for a quote
+        </a>
       </button>
     </div>
   </div>

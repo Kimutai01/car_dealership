@@ -20,6 +20,14 @@
       Blog
     </a>
 
+    <%= if @user_signed_in == true do %>
+      <%= live_redirect("Dashboard",
+        to: Routes.dashboard_index_path(@socket, :index),
+        class:
+          "text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+      ) %>
+    <% end %>
+
     <a
       href="#footer"
       class="text-white  md:text-xl text-xs  uppercase hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
@@ -238,7 +246,7 @@
           <div class="shadow-md">
             <img
               src={model.car_photo}
-              alt="doctor"
+              alt="car"
               class="rounded-t-3xl h-[500px] w-[100%] transform-gpu transition-transform scale-100 group-hover:scale-110"
             />
             <div class="p-8 border-t-2 border-[#f3f8ff]">
@@ -435,7 +443,7 @@
         <div class="shadow-md">
           <img
             src="https://images.unsplash.com/photo-1502877338535-766e1452684a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Q0FSfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
-            alt="doctor"
+            alt="car"
             class="rounded-t-3xl w-[100%] transform-gpu transition-transform scale-100 group-hover:scale-110"
           />
           <div class="p-8 border-t-2 border-[#f3f8ff]">

@@ -21,7 +21,12 @@ defmodule CarDealership.QuotesTest do
     end
 
     test "create_quote/1 with valid data creates a quote" do
-      valid_attrs = %{first_name: "some first_name", last_name: "some last_name", email: "some email", phone_number: "some phone_number"}
+      valid_attrs = %{
+        first_name: "some first_name",
+        last_name: "some last_name",
+        email: "some email",
+        phone_number: "some phone_number"
+      }
 
       assert {:ok, %Quote{} = quote} = Quotes.create_quote(valid_attrs)
       assert quote.first_name == "some first_name"
@@ -36,7 +41,13 @@ defmodule CarDealership.QuotesTest do
 
     test "update_quote/2 with valid data updates the quote" do
       quote = quote_fixture()
-      update_attrs = %{first_name: "some updated first_name", last_name: "some updated last_name", email: "some updated email", phone_number: "some updated phone_number"}
+
+      update_attrs = %{
+        first_name: "some updated first_name",
+        last_name: "some updated last_name",
+        email: "some updated email",
+        phone_number: "some updated phone_number"
+      }
 
       assert {:ok, %Quote{} = quote} = Quotes.update_quote(quote, update_attrs)
       assert quote.first_name == "some updated first_name"

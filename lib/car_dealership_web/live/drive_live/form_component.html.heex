@@ -1,14 +1,7 @@
 <div>
-  <h2>Ask for quote</h2>
+  <h2><%= @title %></h2>
 
-  <.form
-    let={f}
-    for={@changeset}
-    id="quote-form"
-    phx-target={@myself}
-    phx-change="validate"
-    phx-submit="save"
-  >
+  <.form let={f} for={@changeset} id="drive-form" phx-change="validate" phx-submit="save">
     <%= label(f, :first_name) %>
     <%= text_input(f, :first_name) %>
     <%= error_tag(f, :first_name) %>
@@ -16,7 +9,6 @@
     <%= label(f, :last_name) %>
     <%= text_input(f, :last_name) %>
     <%= error_tag(f, :last_name) %>
-
     <%= hidden_input(f, :model_id, value: @model.id) %>
 
     <%= label(f, :email) %>
