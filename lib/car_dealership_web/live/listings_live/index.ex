@@ -2,11 +2,24 @@ defmodule CarDealershipWeb.ListingLive.Index do
   alias CarDealership.Categories
   alias CarDealership.Models
   alias CarDealership.Models.Model
+  alias CarDealership.Accounts
 
   use CarDealershipWeb, :live_view
   @impl true
-  def mount(_params, _session, socket) do
+  def mount(_params, session, socket) do
     changeset = Models.change_model(%Model{})
+
+    user_signed_in =
+      if is_nil(session["user_token"]) do
+        false
+      else
+        true
+      end
+
+    current_user =
+      if user_signed_in do
+        Accounts.get_user_by_session_token(session["user_token"])
+      end
 
     categories =
       Categories.list_categories()
@@ -22,7 +35,9 @@ defmodule CarDealershipWeb.ListingLive.Index do
      |> assign(:max_value, "")
      |> assign(:min_value, "")
      |> assign(:category, "")
-     |> assign(:models, models)}
+     |> assign(:models, models)
+     |> assign(:user_signed_in, user_signed_in)
+     |> assign(:current_user, current_user)}
   end
 
   def handle_event("validate", params, socket) do
