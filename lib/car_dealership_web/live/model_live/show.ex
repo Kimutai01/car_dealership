@@ -1,5 +1,6 @@
 defmodule CarDealershipWeb.ModelLive.Show do
   use CarDealershipWeb, :live_view
+  alias CarDealership.Quotes.Quote
 
   alias CarDealership.Models
 
@@ -24,10 +25,12 @@ defmodule CarDealershipWeb.ModelLive.Show do
      socket
      |> assign(:page_title, page_title(socket.assigns.live_action))
      |> assign(:model, model)
-     |> assign(:models, models)}
+     |> assign(:models, models)
+      |> assign(:quote, %Quote{})}
   end
 
   defp page_title(:show), do: "Show Model"
   defp page_title(:edit), do: "Edit Model"
   defp page_title(:add_cars), do: "Add Cars"
+  defp page_title(:add_quote), do: "Add Quote"
 end

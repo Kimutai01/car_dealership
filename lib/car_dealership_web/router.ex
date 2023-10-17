@@ -37,6 +37,7 @@ defmodule CarDealershipWeb.Router do
     live "/models/:id/edit", ModelLive.Index, :edit
 
     live "/cars/:id", ModelLive.Show, :show
+    live "/cars/:id/add_quote", ModelLive.Show, :add_quote
     live "/models/:id/show/edit", ModelLive.Show, :edit
 
     live "/models/:id/models", ModelLive.Show, :add_models
@@ -51,6 +52,13 @@ defmodule CarDealershipWeb.Router do
 
     live "/blogs/:id", BlogLive.Show, :show
     live "/blogs/:id/show/edit", BlogLive.Show, :edit
+
+    live "/quotes", QuoteLive.Index, :index
+    live "/quotes/new", QuoteLive.Index, :new
+    live "/quotes/:id/edit", QuoteLive.Index, :edit
+
+    live "/quotes/:id", QuoteLive.Show, :show
+    live "/quotes/:id/show/edit", QuoteLive.Show, :edit
     # live "/cars", CarLive.Index, :index
     # # live "/cars/new", CarLive.Index, :new
     # # live "/cars/:id/edit", CarLive.Index, :edit

@@ -1,0 +1,34 @@
+<div>
+  <h2><%= @title %></h2>
+
+  <.form
+    let={f}
+    for={@changeset}
+    id="quote-form"
+    phx-target={@myself}
+    phx-change="validate"
+    phx-submit="save">
+  
+    <%= label f, :first_name %>
+    <%= text_input f, :first_name %>
+    <%= error_tag f, :first_name %>
+  
+    <%= label f, :last_name %>
+    <%= text_input f, :last_name %>
+    <%= error_tag f, :last_name %>
+
+    <%= hidden_input f, :model_id, value: @model.id %>
+  
+    <%= label f, :email %>
+    <%= text_input f, :email %>
+    <%= error_tag f, :email %>
+  
+    <%= label f, :phone_number %>
+    <%= text_input f, :phone_number %>
+    <%= error_tag f, :phone_number %>
+  
+    <div>
+      <%= submit "Save", phx_disable_with: "Saving..." %>
+    </div>
+  </.form>
+</div>

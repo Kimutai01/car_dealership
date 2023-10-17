@@ -25,6 +25,20 @@
   </.modal>
 <% end %>
 
+<%= if @live_action in [:add_quote] do %>
+  <.modal return_to={Routes.model_show_path(@socket, :show, @model)}>
+    <.live_component
+      module={CarDealershipWeb.QuoteLive.FormComponent}
+      id={@quote.id || :new}
+      title={@page_title}
+      action={@live_action}
+      quote={@quote}
+      model={@model}
+      return_to={Routes.model_show_path(@socket, :show, @model)}
+    />
+  </.modal>
+<% end %>
+
 <%!-- <ul>
   <li>
     <strong>Name:</strong>

@@ -18,6 +18,7 @@ defmodule CarDealership.Models.Model do
     field :is_featured, :boolean, default: false
 
     belongs_to :category, CarDealership.Categories.Category
+    has_many :quotes, CarDealership.Quotes.Quote
 
     timestamps()
   end
