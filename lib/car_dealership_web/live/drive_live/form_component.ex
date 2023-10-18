@@ -1,6 +1,5 @@
 defmodule CarDealershipWeb.DriveLive.FormComponent do
   use CarDealershipWeb, :live_component
-
   alias CarDealership.Drives
 
   @impl true

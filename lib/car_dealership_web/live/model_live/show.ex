@@ -5,18 +5,33 @@ defmodule CarDealershipWeb.ModelLive.Show do
   alias CarDealership.Drives
   alias CarDealership.Mpesas
   alias CarDealership.Models
+  alias CarDealership.Accounts
 
   @impl true
-  def mount(params, _session, socket) do
+  def mount(params, session, socket) do
     IO.inspect(params)
     model = Models.get_model!(params["id"])
+
+     user_signed_in =
+      if is_nil(session["user_token"]) do
+        false
+      else
+        true
+      end
+
+    current_user =
+      if user_signed_in do
+        Accounts.get_user_by_session_token(session["user_token"])
+      end
 
     {:ok,
      socket
      |> assign(:return_to, Routes.model_show_path(CarDealershipWeb.Endpoint, :show, model))
      |> assign(:error_modal, false)
      |> assign(:n, false)
-     |> assign(:success_modal, false)}
+     |> assign(:success_modal, false)
+      |> assign(:user_signed_in, user_signed_in)
+     |> assign(:current_user, current_user)}
   end
 
   @impl true
@@ -39,6 +54,7 @@ defmodule CarDealershipWeb.ModelLive.Show do
      |> assign(:quote, %Quote{})
      |> assign(:drive, %Drive{})}
   end
+
 
   def handle_event("validate", %{"_target" => _, "drive" => drive_params}, socket) do
     changeset =
