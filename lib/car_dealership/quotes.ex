@@ -101,4 +101,8 @@ defmodule CarDealership.Quotes do
   def change_quote(%Quote{} = quote, attrs \\ %{}) do
     Quote.changeset(quote, attrs)
   end
+
+  def paginate_quotes(params) do
+    Repo.paginate(Quote, params)
+  end
 end

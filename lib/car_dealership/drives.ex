@@ -101,4 +101,8 @@ defmodule CarDealership.Drives do
   def change_drive(%Drive{} = drive, attrs \\ %{}) do
     Drive.changeset(drive, attrs)
   end
+
+  def paginate_drives(params) do
+    Repo.paginate(Drive, params)
+  end
 end

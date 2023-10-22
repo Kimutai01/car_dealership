@@ -12,7 +12,7 @@ defmodule CarDealershipWeb.ModelLive.Show do
     IO.inspect(params)
     model = Models.get_model!(params["id"])
 
-     user_signed_in =
+    user_signed_in =
       if is_nil(session["user_token"]) do
         false
       else
@@ -30,7 +30,7 @@ defmodule CarDealershipWeb.ModelLive.Show do
      |> assign(:error_modal, false)
      |> assign(:n, false)
      |> assign(:success_modal, false)
-      |> assign(:user_signed_in, user_signed_in)
+     |> assign(:user_signed_in, user_signed_in)
      |> assign(:current_user, current_user)}
   end
 
@@ -54,7 +54,6 @@ defmodule CarDealershipWeb.ModelLive.Show do
      |> assign(:quote, %Quote{})
      |> assign(:drive, %Drive{})}
   end
-
 
   def handle_event("validate", %{"_target" => _, "drive" => drive_params}, socket) do
     changeset =

@@ -54,6 +54,7 @@ defmodule CarDealership.MixProject do
       {:mpesa, "~> 0.1.2"},
       {:ex_heroicons, "~> 2.0.0"},
       {:finch, "~> 0.16.0"},
+      {:scrivener_ecto, "~> 2.7"}
     ]
   end
 

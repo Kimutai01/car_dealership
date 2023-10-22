@@ -20,6 +20,8 @@ if System.get_env("PHX_SERVER") do
   config :car_dealership, CarDealershipWeb.Endpoint, server: true
 end
 
+
+
 if config_env() == :prod do
   database_url =
     System.get_env("DATABASE_URL") ||

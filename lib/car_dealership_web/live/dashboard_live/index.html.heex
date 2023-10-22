@@ -1,4 +1,163 @@
-<div class="flex justify-between w-[100%]">
+<div class="flex gap-10 items-center justify-center mx-20 mt-10">
+  <div class="bg-white shadow-md shadow-gray-500 w-[30%] mt-4 relative rounded-2xl h-[150px]">
+    <div class="bg-blue-500 w-[60px] h-[60px] flex justify-center items-center rounded-2xl text-white absolute -top-6 left-4">
+      <i class="fas fa-car h-6 w-6 text-white"></i>
+    </div>
+    <div class="flex flex-col justify-between">
+      <div class="p-2  flex flex-col items-end justify-start ">
+        <p class="text-gray-500">
+          Cars
+        </p>
+        <p class="text-[#131217] text-[30px]">
+          <%= @total_cars %>
+        </p>
+      </div>
+
+      <p class="w-[80%] mx-auto h-[1px] bg-gray-500" />
+    </div>
+  </div>
+
+  <div class="bg-white shadow-md w-[30%] shadow-gray-500 mt-4 relative rounded-2xl h-[150px]">
+    <div class="bg-blue-500 w-[60px] h-[60px] flex justify-center items-center rounded-2xl text-white absolute -top-6 left-4">
+      <i class="fas fa-car h-6 w-6 text-white"></i>
+    </div>
+    <div class="flex flex-col justify-between">
+      <div class="p-2  flex flex-col items-end justify-start ">
+        <p class="text-gray-500">
+          Test Drives
+        </p>
+        <p class="text-[#131217] text-[30px]">
+          <%= @total_test_drives %>
+        </p>
+      </div>
+
+      <p class="w-[80%] mx-auto h-[1px] bg-gray-500" />
+    </div>
+  </div>
+  <div class="bg-white shadow-md w-[30%] shadow-gray-500 mt-4 relative rounded-2xl h-[150px]">
+    <div class="bg-blue-500 w-[60px] h-[60px] flex justify-center items-center rounded-2xl text-white absolute -top-6 left-4">
+      <i class="fas fa-sticky-note h-6 w-6 text-white"></i>
+    </div>
+
+    <div class="flex flex-col justify-between">
+      <div class="p-2  flex flex-col items-end justify-start ">
+        <p class="text-gray-500">
+          Quotes requested
+        </p>
+        <p class="text-[#131217] gap-2 flex items-center text-[30px]">
+          <%= @total_quotes_requested %>
+        </p>
+      </div>
+
+      <p class="w-[80%] mx-auto h-[1px] bg-gray-500" />
+    </div>
+  </div>
+  <%!-- <div class="bg-white shadow-md shadow-gray-500 mt-4 relative rounded-2xl h-[150px]">
+    <div class="bg-green-500 w-[60px] h-[60px] flex justify-center items-center rounded-2xl text-white absolute -top-6 left-4">
+      <%= Heroicons.icon("user-group",
+        type: "solid",
+        class: "h-6 text-white w-6"
+      ) %>
+    </div>
+    <div class="flex flex-col justify-between">
+      <div class="p-2  flex flex-col items-end justify-start ">
+        <p class="text-gray-500">
+          Staff
+        </p>
+        <p class="text-[#131217] text-[30px]">
+          <%= length(@staff) %>
+        </p>
+      </div>
+
+      <p class="w-[80%] mx-auto h-[1px] bg-gray-500" />
+    </div>
+  </div> --%>
+</div>
+
+<div class="bg-white h-[60vh] flex justify-between flex-col  rounded-xl p-4 overflow-y-scroll">
+    <table class="w-[100%]">
+      <thead class="border-b-2  border-black">
+        <tr>
+          <th class="p-2 font-semibold text-gray-700">first_name</th>
+          <th class="p-2 font-semibold text-gray-700">last_name</th>
+          <th class="p-2 font-semibold text-gray-700">Email</th>
+
+          <th class="p-2 font-semibold text-gray-700">phone_number</th>
+
+          <th class="p-2 font-semibold text-gray-700">Send SMS</th>
+          <th class="p-2 font-semibold text-gray-700">Send Email</th>
+        </tr>
+      </thead>
+      <tbody id="tickets">
+        <%= for test <- @test_drive do %>
+          <tr
+            
+            class="border-b-[1px] cursor-pointer text-center hover:bg-blue-100/50 transition-all ease-in-out duration-500  border-black"
+          >
+            <td class="p-1"><%= test.first_name%></td>
+            <td class="p-1"><%= test.last_name %></td>
+            <td class="p-1"><%= test.email %></td>
+            <td class="p-1"><%= test.phone_number %></td>
+         <td class="p-1">
+              <button
+                phx-click="send_sms"
+                phx-value-id={test.id}
+                class=" bg-green-500 flex gap-2 w-[200px] justify-center items-center text-white  rounded-md p-2 "
+              >
+                Send SMS
+              </button>
+            </td>
+           
+
+            
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="flex flex-wrap flex-row p-2">
+      <%= if @total_test_drive_page_number > 1 do %>
+        <%= live_patch(
+            to: Routes.dashboard_index_path(@socket, :index, page: @total_test_drive_page_number - 1),
+            class: "pagination-link"
+          ) do %>
+          <div class="flex gap-2 items-center ">
+            Previous
+          </div>
+        <% end %>
+      <% end %>
+
+      <%= for idx <-  Enum.to_list(1..@total_test_drive_pages) do %>
+        <%= live_patch(
+            to: Routes.dashboard_index_path(@socket, :index, page: idx),
+            class: "pagination-link"
+          ) do %>
+          <%= if @total_test_drive_pages == idx do %>
+            <p class="bg-green-500    text-white px-2 border-white border-transparent ">
+              <%= idx %>
+            </p>
+          <% else %>
+            <p class="px-2   border-white">
+              <%= idx %>
+            </p>
+          <% end %>
+        <% end %>
+      <% end %>
+
+      <%= if @total_test_drive_page_number < @total_test_drive_pages do %>
+        <%= live_patch(
+            to: Routes.dashboard_index_path(@socket, :index, page: @total_test_drive_page_number + 1),
+            class: "pagination-link"
+          )  do %>
+          <div class="flex gap-2 items-center ">
+            Next
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+<div class="flex justify-between mt-10 w-[100%]">
   <div class="w-[30%]">
     <canvas
       id="myChart"
