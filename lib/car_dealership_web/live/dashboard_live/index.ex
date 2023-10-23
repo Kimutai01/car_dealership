@@ -5,9 +5,21 @@ defmodule CarDealershipWeb.DashboardLive.Index do
   alias CarDealership.Drives
   alias CarDealership.Models
   alias CarDealership.Quotes
+  alias CarDealership.Accounts
 
-  def mount(params, _session, socket) do
+  def mount(params, session, socket) do
     IO.inspect(params)
+    user_signed_in =
+      if is_nil(session["user_token"]) do
+        false
+      else
+        true
+      end
+
+    current_user =
+      if user_signed_in do
+        Accounts.get_user_by_session_token(session["user_token"])
+      end
     test_drive = Drives.paginate_drives(params).entries
     total_test_drive_pages = Drives.paginate_drives(params).total_pages
     total_test_drive_entries = Drives.paginate_drives(params).total_entries
@@ -45,6 +57,8 @@ defmodule CarDealershipWeb.DashboardLive.Index do
      |> assign(:total_quote_page_number, total_quote_page_number)
      |> assign(:cars, cars)
      |> assign(:categories, categories)
+     |> assign(:user_signed_in, user_signed_in)
+      |> assign(:current_user, current_user)
      |> apply_action(socket.assigns.live_action, params)}
   end
 
