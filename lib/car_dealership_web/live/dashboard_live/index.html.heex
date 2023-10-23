@@ -74,88 +74,364 @@
   </div> --%>
 </div>
 
+<h2 class="font-bold text-3xl text-center mt-10 uppercase">All test drive bookings</h2>
 <div class="bg-white h-[60vh] flex justify-between flex-col  rounded-xl p-4 overflow-y-scroll">
-    <table class="w-[100%]">
-      <thead class="border-b-2  border-black">
-        <tr>
-          <th class="p-2 font-semibold text-gray-700">first_name</th>
-          <th class="p-2 font-semibold text-gray-700">last_name</th>
-          <th class="p-2 font-semibold text-gray-700">Email</th>
+  <table class="w-[100%]">
+    <thead class="border-b-2  border-black">
+      <tr>
+        <th class="p-2 font-semibold text-gray-700">first_name</th>
+        <th class="p-2 font-semibold text-gray-700">last_name</th>
+        <th class="p-2 font-semibold text-gray-700">Email</th>
 
-          <th class="p-2 font-semibold text-gray-700">phone_number</th>
+        <th class="p-2 font-semibold text-gray-700">phone_number</th>
 
-          <th class="p-2 font-semibold text-gray-700">Send SMS</th>
-          <th class="p-2 font-semibold text-gray-700">Send Email</th>
+        <th class="p-2 font-semibold text-gray-700">Send SMS</th>
+        <th class="p-2 font-semibold text-gray-700">Send Email</th>
+      </tr>
+    </thead>
+    <tbody id="tickets">
+      <%= for test <- @test_drive do %>
+        <tr class="border-b-[1px] cursor-pointer text-center hover:bg-blue-100/50 transition-all ease-in-out duration-500  border-black">
+          <td class="p-1"><%= test.first_name %></td>
+          <td class="p-1"><%= test.last_name %></td>
+          <td class="p-1"><%= test.email %></td>
+          <td class="p-1"><%= test.phone_number %></td>
+          <td class="p-1">
+            <button
+              phx-click="send_sms"
+              phx-value-id={test.id}
+              phx-value-name={~c"test_drive"}
+              class=" bg-green-500 flex gap-2 w-[200px] justify-center items-center text-white  rounded-md p-2 "
+            >
+              Send SMS
+            </button>
+          </td>
         </tr>
-      </thead>
-      <tbody id="tickets">
-        <%= for test <- @test_drive do %>
-          <tr
-            
-            class="border-b-[1px] cursor-pointer text-center hover:bg-blue-100/50 transition-all ease-in-out duration-500  border-black"
-          >
-            <td class="p-1"><%= test.first_name%></td>
-            <td class="p-1"><%= test.last_name %></td>
-            <td class="p-1"><%= test.email %></td>
-            <td class="p-1"><%= test.phone_number %></td>
-         <td class="p-1">
-              <button
-                phx-click="send_sms"
-                phx-value-id={test.id}
-                class=" bg-green-500 flex gap-2 w-[200px] justify-center items-center text-white  rounded-md p-2 "
-              >
-                Send SMS
-              </button>
-            </td>
-           
+      <% end %>
+    </tbody>
+  </table>
 
-            
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <div class="flex flex-wrap flex-row p-2">
-      <%= if @total_test_drive_page_number > 1 do %>
-        <%= live_patch(
+  <div class="flex flex-wrap flex-row p-2">
+    <%= if @total_test_drive_page_number > 1 do %>
+      <%= live_patch(
             to: Routes.dashboard_index_path(@socket, :index, page: @total_test_drive_page_number - 1),
             class: "pagination-link"
           ) do %>
-          <div class="flex gap-2 items-center ">
-            Previous
-          </div>
-        <% end %>
+        <div class="flex gap-2 items-center ">
+          Previous
+        </div>
       <% end %>
+    <% end %>
 
-      <%= for idx <-  Enum.to_list(1..@total_test_drive_pages) do %>
-        <%= live_patch(
+    <%= for idx <-  Enum.to_list(1..@total_test_drive_pages) do %>
+      <%= live_patch(
             to: Routes.dashboard_index_path(@socket, :index, page: idx),
             class: "pagination-link"
           ) do %>
-          <%= if @total_test_drive_pages == idx do %>
-            <p class="bg-green-500    text-white px-2 border-white border-transparent ">
-              <%= idx %>
-            </p>
-          <% else %>
-            <p class="px-2   border-white">
-              <%= idx %>
-            </p>
-          <% end %>
+        <%= if @total_test_drive_pages == idx do %>
+          <p class="bg-green-500    text-white px-2 border-white border-transparent ">
+            <%= idx %>
+          </p>
+        <% else %>
+          <p class="px-2   border-white">
+            <%= idx %>
+          </p>
         <% end %>
       <% end %>
+    <% end %>
 
-      <%= if @total_test_drive_page_number < @total_test_drive_pages do %>
-        <%= live_patch(
+    <%= if @total_test_drive_page_number < @total_test_drive_pages do %>
+      <%= live_patch(
             to: Routes.dashboard_index_path(@socket, :index, page: @total_test_drive_page_number + 1),
             class: "pagination-link"
           )  do %>
-          <div class="flex gap-2 items-center ">
-            Next
-          </div>
+        <div class="flex gap-2 items-center ">
+          Next
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<h2 class="font-bold text-3xl text-center mt-10 uppercase">All quotes requested</h2>
+<div class="bg-white h-[60vh] flex justify-between flex-col  rounded-xl p-4 overflow-y-scroll">
+  <table class="w-[100%]">
+    <thead class="border-b-2  border-black">
+      <tr>
+        <th class="p-2 font-semibold text-gray-700">first_name</th>
+        <th class="p-2 font-semibold text-gray-700">last_name</th>
+        <th class="p-2 font-semibold text-gray-700">Email</th>
+
+        <th class="p-2 font-semibold text-gray-700">phone_number</th>
+
+        <th class="p-2 font-semibold text-gray-700">Send SMS</th>
+        <th class="p-2 font-semibold text-gray-700">Send Email</th>
+      </tr>
+    </thead>
+    <tbody id="tickets">
+      <%= for quote <- @quotes do %>
+        <tr class="border-b-[1px] cursor-pointer text-center hover:bg-blue-100/50 transition-all ease-in-out duration-500  border-black">
+          <td class="p-1"><%= quote.first_name %></td>
+          <td class="p-1"><%= quote.last_name %></td>
+          <td class="p-1"><%= quote.email %></td>
+          <td class="p-1"><%= quote.phone_number %></td>
+          <td class="p-1">
+            <button
+              phx-click="send_sms"
+              phx-value-id={quote.id}
+              phx-value-name={~c"quote"}
+              class=" bg-green-500 flex gap-2 w-[200px] justify-center items-center text-white  rounded-md p-2 "
+            >
+              Send SMS
+            </button>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="flex flex-wrap flex-row p-2">
+    <%= if @ total_quote_page_number > 1 do %>
+      <%= live_patch(
+            to: Routes.dashboard_index_path(@socket, :index, page: @ total_quote_page_number - 1),
+            class: "pagination-link"
+          ) do %>
+        <div class="flex gap-2 items-center ">
+          Previous
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= for idx <-  Enum.to_list(1..@total_quote_pages) do %>
+      <%= live_patch(
+            to: Routes.dashboard_index_path(@socket, :index, page: idx),
+            class: "pagination-link"
+          ) do %>
+        <%= if @total_quote_pages == idx do %>
+          <p class="bg-green-500    text-white px-2 border-white border-transparent ">
+            <%= idx %>
+          </p>
+        <% else %>
+          <p class="px-2   border-white">
+            <%= idx %>
+          </p>
         <% end %>
+      <% end %>
+    <% end %>
+
+    <%= if @total_quote_page_number < @total_quote_pages do %>
+      <%= live_patch(
+            to: Routes.dashboard_index_path(@socket, :index, page: @total_quote_page_number + 1),
+            class: "pagination-link"
+          )  do %>
+        <div class="flex gap-2 items-center ">
+          Next
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<section class="text-gray-600 body-font overflow-hidden">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="-my-8 divide-y-2 divide-gray-100">
+      <%= for cat <- @categories do %>
+        <div class="py-8 flex flex-wrap md:flex-nowrap">
+          <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+            <span class="font-semibold title-font text-[#000]"><%= cat.name %></span>
+            <img
+              src={cat.logo}
+              alt=""
+              class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400"
+            />
+          </div>
+          <div class="md:flex-grow">
+            <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Cars</h2>
+            <%= if length(cat.models) >= 1 do %>
+              <%= for car <- cat.models do %>
+                <h4 class="text-2xl text-center my-10 text-gray-900 font-bold title-font mb-2"><%= car.name %></h4>
+
+                <%!-- <div class="flex">
+                  <p>
+                    <%= quote.first_name %>
+                  </p>
+                  <p>
+                    <%= quote.last_name %>
+                  </p>
+                  <p>
+                    <%= quote.email %>
+                  </p>
+                  <p>
+                    <%= quote.phone_number %>
+                  </p>
+                </div> --%>
+                <h2 class="font-bold text-center uppercase my-3">Quotes requested</h2>
+                <div class="max-w-2xl mx-auto">
+                  <div class="flex flex-col">
+                    <div class="overflow-x-auto shadow-md sm:rounded-lg">
+                      <div class="inline-block min-w-full align-middle">
+                        <div class="overflow-hidden ">
+                          <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-[#fff]">
+                            <thead class="bg-gray-100 dark:bg-[#fff]">
+                              <tr>
+                                <th
+                                  scope="col"
+                                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-[#000] uppercase dark:text-[#000]"
+                                >
+                                  first_name
+                                </th>
+                                <th
+                                  scope="col"
+                                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-[#000] uppercase dark:text-[#000]"
+                                >
+                                  last_name
+                                </th>
+                                <th
+                                  scope="col"
+                                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-[#000] uppercase dark:text-[#000]"
+                                >
+                                  Email
+                                </th>
+                                <th
+                                  scope="col"
+                                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-[#000] uppercase dark:text-[#000]"
+                                >
+                                  phone_number
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200  ">
+                              <%= if length(car.quotes) >= 1 do %>
+                                <%= for quote <- car.quotes do %>
+                                  <tr class="hover:bg-gray-100 dark:hover:bg-gray-100">
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-[#000]">
+                                      <%= quote.first_name %>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-[#000]">
+                                      <%= quote.last_name %>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-[#000]">
+                                      <%= quote.email %>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-[#000]">
+                                      <%= quote.phone_number %>
+                                    </td>
+                                  </tr>
+                                <% end %>
+                              <% else %>
+                                <tr class="hover:bg-gray-100 dark:hover:bg-gray-100">
+                                  <td class="py-4 px-6 w-[100%] text-sm font-medium text-gray-900 whitespace-nowrap dark:text-[#000]">
+                                    No quotes requested
+                                  </td>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <h2 class="font-bold text-center uppercase my-3">Test drive requested requested</h2>
+                <div class="max-w-2xl mx-auto">
+                  <div class="flex flex-col">
+                    <div class="overflow-x-auto shadow-md sm:rounded-lg">
+                      <div class="inline-block min-w-full align-middle">
+                        <div class="overflow-hidden ">
+                          <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-[#fff]">
+                            <thead class="bg-gray-100 dark:bg-[#fff]">
+                              <tr>
+                                <th
+                                  scope="col"
+                                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-[#000] uppercase dark:text-[#000]"
+                                >
+                                  first_name
+                                </th>
+                                <th
+                                  scope="col"
+                                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-[#000] uppercase dark:text-[#000]"
+                                >
+                                  last_name
+                                </th>
+                                <th
+                                  scope="col"
+                                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-[#000] uppercase dark:text-[#000]"
+                                >
+                                  Email
+                                </th>
+                                <th
+                                  scope="col"
+                                  class="py-3 px-6 text-xs font-medium tracking-wider text-left text-[#000] uppercase dark:text-[#000]"
+                                >
+                                  phone_number
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200  ">
+                              <%= if length(car.quotes) >= 1 do %>
+                                <%= for drive <- car.drives do %>
+                                  <tr class="hover:bg-gray-100 dark:hover:bg-gray-100">
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-[#000]">
+                                      <%= drive.first_name %>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-[#000]">
+                                      <%= drive.last_name %>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-[#000]">
+                                      <%= drive.email %>
+                                    </td>
+                                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-[#000]">
+                                      <%= drive.phone_number %>
+                                    </td>
+                                  </tr>
+                                <% end %>
+                              <% else %>
+                                <tr class="hover:bg-gray-100 dark:hover:bg-gray-100">
+                                  <td class="py-4 px-6 w-[100%] text-sm font-medium text-gray-900 whitespace-nowrap dark:text-[#000]">
+                                    No test drive requested
+                                  </td>
+                                </tr>
+                              <% end %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              <p class="text-xl font-medium text-gray-900 title-font mb-2">
+                No cars in this category
+              </p>
+              <div class="flex items-center text-indigo-500">
+                <%= link("Add Car",
+                  to: Routes.category_index_path(@socket, :index),
+                  class:
+                    "text-indigo-500  md:text-xl text-xs   hover:scale-105 transition-all duration-500 ease-in-out   md:ml-8 ml-2"
+                ) %>
+                <svg
+                  class="w-4 h-4 ml-2"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  fill="none"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="M12 5l7 7-7 7"></path>
+                </svg>
+              </div>
+            <% end %>
+            
+          </div>
+          
+        </div>
       <% end %>
     </div>
   </div>
+</section>
 
 <div class="flex justify-between mt-10 w-[100%]">
   <div class="w-[30%]">

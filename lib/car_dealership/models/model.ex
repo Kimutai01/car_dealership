@@ -19,6 +19,7 @@ defmodule CarDealership.Models.Model do
 
     belongs_to :category, CarDealership.Categories.Category
     has_many :quotes, CarDealership.Quotes.Quote
+    has_many :drives, CarDealership.Drives.Drive
 
     timestamps()
   end

@@ -18,7 +18,7 @@ defmodule CarDealership.Models do
 
   """
   def list_models do
-    Repo.all(Model)
+    Repo.all(Model) |> Repo.preload(:quotes) |> Repo.preload(:category) |> Repo.preload(:drives)
   end
 
   @doc """
@@ -35,7 +35,12 @@ defmodule CarDealership.Models do
       ** (Ecto.NoResultsError)
 
   """
-  def get_model!(id), do: Repo.get!(Model, id)
+  def get_model!(id),
+    do:
+      Repo.get!(Model, id)
+      |> Repo.preload(:quotes)
+      |> Repo.preload(:category)
+      |> Repo.preload(:drives)
 
   @doc """
   Creates a model.

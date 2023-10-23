@@ -18,7 +18,11 @@ defmodule CarDealership.Categories do
 
   """
   def list_categories do
-    Repo.all(Category) |> Repo.preload(:models)
+    query =
+      from c in Category,
+        preload: [models: [:quotes, :drives]]
+
+    Repo.all(query)
   end
 
   @doc """
