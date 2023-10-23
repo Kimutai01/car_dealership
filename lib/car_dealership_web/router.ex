@@ -41,7 +41,7 @@ defmodule CarDealershipWeb.Router do
     live "/cars/:id/book_test_drive", ModelLive.Show, :book_test_drive
     live "/models/:id/show/edit", ModelLive.Show, :edit
 
-    live "/dashboard", DashboardLive.Index, :index
+
 
     live "/models/:id/models", ModelLive.Show, :add_models
 
@@ -130,6 +130,10 @@ defmodule CarDealershipWeb.Router do
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+
+    live "/dashboard", DashboardLive.Index, :index
+
+    live "/users", UsersLive.Index, :index
   end
 
   scope "/", CarDealershipWeb do
