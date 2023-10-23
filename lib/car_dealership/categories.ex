@@ -105,4 +105,14 @@ defmodule CarDealership.Categories do
   def change_category(%Category{} = category, attrs \\ %{}) do
     Category.changeset(category, attrs)
   end
+
+  def paginate_categories(params) do
+    query =
+      from c in Category,
+        preload: [models: [:quotes, :drives]]
+
+    Repo.paginate(query, params)
+  end
+
+
 end

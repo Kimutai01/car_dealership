@@ -217,62 +217,6 @@ Hooks.Navbar = {
   },
 };
 
-Hooks.Chart = {
-  mounted() {
-    new Chart("myChart", {
-      type: "pie",
-      color: "white",
-      data: {
-        labels: [""],
-        datasets: [
-          {
-            label: "",
-            data: [10, 15, 20],
-            backgroundColor: ["yellow", "green", "blue"],
-          },
-        ],
-      },
-    });
-  },
-};
-Hooks.Chart2 = {
-  mounted() {
-    new Chart("myChart2", {
-      type: "doughnut",
-      color: "white",
-      data: {
-        labels: [""],
-        datasets: [
-          {
-            label: "",
-            data: [50, 52],
-            backgroundColor: ["green", "yellow"],
-          },
-        ],
-      },
-    });
-  },
-};
-
-Hooks.Chart3 = {
-  mounted() {
-    new Chart("myChart3", {
-      type: "polarArea",
-      color: "white",
-      data: {
-        labels: ["", "", ""],
-        datasets: [
-          {
-            label: "",
-            data: [10, 15, 20],
-            backgroundColor: ["red", "green", "yellow"],
-          },
-        ],
-      },
-    });
-  },
-};
-
 // };
 
 // Hooks.Editor = {
