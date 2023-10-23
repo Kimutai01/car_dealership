@@ -1,7 +1,7 @@
 defmodule CarDealershipWeb.UsersLive.Index do
   alias CarDealership.Accounts
 
-  use CarDealershipWeb, :live_view
+  use CarDealershipWeb, :dashboard_live_view
   @impl true
   def mount(_params, session, socket) do
     current_user = Accounts.get_user_by_session_token(session["user_token"])
@@ -10,6 +10,7 @@ defmodule CarDealershipWeb.UsersLive.Index do
 
     {:ok,
      socket
+    |> assign(:url, "/users")
      |> assign(:users, users)
      |> assign(:current_user, current_user)}
   end

@@ -33,6 +33,8 @@ defmodule CarDealershipWeb.HomeLive.Index do
         Accounts.get_user_by_session_token(session["user_token"])
       end
 
+      IO.inspect(current_user)
+
     categories =
       Categories.list_categories()
       |> Enum.map(fn x -> {x.name, x.id} end)

@@ -1,7 +1,7 @@
 defmodule CarDealershipWeb.DashboardLive.Index do
   alias CarDealership.Categories
   alias CarDealership.Models
-  use CarDealershipWeb, :live_view
+  use CarDealershipWeb, :dashboard_live_view
   alias CarDealership.Drives
   alias CarDealership.Models
   alias CarDealership.Quotes
@@ -45,6 +45,7 @@ defmodule CarDealershipWeb.DashboardLive.Index do
 
     {:ok,
      socket
+     |> assign(:url, "/dashboard")
      |> assign(:test_drive, test_drive)
      |> assign(:total_cars, total_cars)
      |> assign(:categories, categories)
