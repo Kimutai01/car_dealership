@@ -113,6 +113,4 @@ defmodule CarDealership.Categories do
 
     Repo.paginate(query, params)
   end
-
-
 end

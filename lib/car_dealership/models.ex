@@ -145,4 +145,8 @@ defmodule CarDealership.Models do
 
     Repo.all(query)
   end
+
+  def paginate_models(params) do
+    Repo.paginate(Model, params)
+  end
 end

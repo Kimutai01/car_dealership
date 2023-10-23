@@ -70,8 +70,6 @@
   </div>
 </div>
 
-
-
 <div class="flex gap-10 items-center justify-center mx-20 pt-28">
   <div class="bg-white shadow-md shadow-gray-500 w-[30%] mt-4 relative rounded-2xl h-[150px]">
     <div class="bg-blue-500 w-[60px] h-[60px] flex justify-center items-center rounded-2xl text-white absolute -top-6 left-4">
@@ -126,26 +124,6 @@
       <p class="w-[80%] mx-auto h-[1px] bg-gray-500" />
     </div>
   </div>
-  <%!-- <div class="bg-white shadow-md shadow-gray-500 mt-4 relative rounded-2xl h-[150px]">
-    <div class="bg-green-500 w-[60px] h-[60px] flex justify-center items-center rounded-2xl text-white absolute -top-6 left-4">
-      <%= Heroicons.icon("user-group",
-        type: "solid",
-        class: "h-6 text-white w-6"
-      ) %>
-    </div>
-    <div class="flex flex-col justify-between">
-      <div class="p-2  flex flex-col items-end justify-start ">
-        <p class="text-gray-500">
-          Staff
-        </p>
-        <p class="text-[#131217] text-[30px]">
-          <%= length(@staff) %>
-        </p>
-      </div>
-
-      <p class="w-[80%] mx-auto h-[1px] bg-gray-500" />
-    </div>
-  </div> --%>
 </div>
 
 <h2 class="font-bold text-3xl text-center mt-10 uppercase">All test drive bookings</h2>
@@ -322,7 +300,9 @@
             <h2 class="text-2xl font-medium text-gray-900 title-font mb-2">Cars</h2>
             <%= if length(cat.models) >= 1 do %>
               <%= for car <- cat.models do %>
-                <h4 class="text-2xl text-center my-10 text-gray-900 font-bold title-font mb-2"><%= car.name %></h4>
+                <h4 class="text-2xl text-center my-10 text-gray-900 font-bold title-font mb-2">
+                  <%= car.name %>
+                </h4>
 
                 <%!-- <div class="flex">
                   <p>
@@ -406,7 +386,9 @@
                   </div>
                 </div>
 
-                <h2 class="font-bold text-center uppercase my-3">Test drive requested requested</h2>
+                <h2 class="font-bold text-center uppercase my-3">
+                  Test drive requested requested
+                </h2>
                 <div class="max-w-2xl mx-auto">
                   <div class="flex flex-col">
                     <div class="overflow-x-auto shadow-md sm:rounded-lg">
@@ -498,13 +480,9 @@
                 </svg>
               </div>
             <% end %>
-            
           </div>
-          
         </div>
       <% end %>
     </div>
-                   
   </div>
 </section>
-

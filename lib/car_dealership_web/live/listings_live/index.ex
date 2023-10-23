@@ -6,7 +6,7 @@ defmodule CarDealershipWeb.ListingLive.Index do
 
   use CarDealershipWeb, :live_view
   @impl true
-  def mount(_params, session, socket) do
+  def mount(params, session, socket) do
     changeset = Models.change_model(%Model{})
 
     user_signed_in =
@@ -25,7 +25,10 @@ defmodule CarDealershipWeb.ListingLive.Index do
       Categories.list_categories()
       |> Enum.map(fn x -> {x.name, x.id} end)
 
-    models = Models.list_models()
+    models = Models.paginate_models(params).entries
+    total_pages = Models.paginate_models(params).total_pages
+    page_number = Models.paginate_models(params).page_number
+    total_entries = Models.paginate_models(params).total_entries
     IO.inspect(models)
 
     {:ok,
@@ -37,6 +40,9 @@ defmodule CarDealershipWeb.ListingLive.Index do
      |> assign(:category, "")
      |> assign(:models, models)
      |> assign(:user_signed_in, user_signed_in)
+     |> assign(:total_pages, total_pages)
+     |> assign(:page_number, page_number)
+     |> assign(:total_entries, total_entries)
      |> assign(:current_user, current_user)}
   end
 
@@ -88,5 +94,26 @@ defmodule CarDealershipWeb.ListingLive.Index do
       end
 
     {:noreply, socket |> assign(:models, models)}
+  end
+
+  defp apply_action(socket, :index, _params) do
+    socket
+    |> assign(:page_title, "Listing Quotes")
+    |> assign(:quote, nil)
+  end
+
+  def handle_params(params, _url, socket) do
+    models = Models.paginate_models(params).entries
+    total_pages = Models.paginate_models(params).total_pages
+    page_number = Models.paginate_models(params).page_number
+    total_entries = Models.paginate_models(params).total_entries
+
+    {:noreply,
+     socket
+     |> assign(:models, models)
+     |> assign(:total_pages, total_pages)
+     |> assign(:page_number, page_number)
+     |> assign(:total_entries, total_entries)
+     |> apply_action(socket.assigns.live_action, params)}
   end
 end

@@ -9,6 +9,7 @@ defmodule CarDealershipWeb.DashboardLive.Index do
 
   def mount(params, session, socket) do
     IO.inspect(params)
+
     user_signed_in =
       if is_nil(session["user_token"]) do
         false
@@ -20,6 +21,7 @@ defmodule CarDealershipWeb.DashboardLive.Index do
       if user_signed_in do
         Accounts.get_user_by_session_token(session["user_token"])
       end
+
     test_drive = Drives.paginate_drives(params).entries
     total_test_drive_pages = Drives.paginate_drives(params).total_pages
     total_test_drive_entries = Drives.paginate_drives(params).total_entries
@@ -58,7 +60,7 @@ defmodule CarDealershipWeb.DashboardLive.Index do
      |> assign(:cars, cars)
      |> assign(:categories, categories)
      |> assign(:user_signed_in, user_signed_in)
-      |> assign(:current_user, current_user)
+     |> assign(:current_user, current_user)
      |> apply_action(socket.assigns.live_action, params)}
   end
 
